@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".activities.MainActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <me.itangqi.waveloadingview.WaveLoadingView
+            android:id="@+id/waveBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:wlv_borderColor="@color/colorAccent"
+            custom:wlv_borderWidth="3dp"
+            custom:wlv_progressValue="90"
+            custom:wlv_shapeType="circle"
+            custom:wlv_titleCenter="Center Title"
+            custom:wlv_titleCenterColor="@android:color/white"
+            custom:wlv_titleCenterSize="24sp"
+            custom:wlv_waveAmplitude="70"
+            custom:wlv_waveColor="@color/colorAccent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PAY"
+            android:id="@+id/pay_butt"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GET"
+            android:id="@+id/get_butt"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
