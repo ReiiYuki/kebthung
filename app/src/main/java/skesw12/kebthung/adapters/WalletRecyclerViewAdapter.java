@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.itangqi.waveloadingview.WaveLoadingView;
@@ -41,6 +42,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         @BindView(R.id.get_button) Button getButton;
         @BindView(R.id.transfer_button) Button transferButton;
         @BindView(R.id.note_listview) ListView noteListView;
+        @BindView(R.id.delete_wallet_button) CircleButton deleteWalletButton;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -108,6 +110,12 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void onClick(View v) {
                     showTransferDialog(context,wallet,noteListViewAdapter);
+                }
+            });
+            itemHolder.deleteWalletButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDeleteWalletDialog(context,wallet);
                 }
             });
         }
@@ -219,6 +227,29 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         wallet.transfer(purposeText.getText().toString(),(Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                         adapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showNoteDetialDialog(){
+
+    }
+
+    private void showDeleteWalletDialog(Context context, final Wallet wallet){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Sure to Delete "+wallet.getName()+"?")
+                .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        User.getInstance().removeWallet(wallet);
+                        notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {

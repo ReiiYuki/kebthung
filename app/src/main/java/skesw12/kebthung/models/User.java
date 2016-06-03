@@ -32,4 +32,8 @@ public class User {
         transferList.remove(wallet);
         return transferList;
     }
+
+    public void removeWallet(Wallet wallet){
+        wallets.remove(wallet);
+    }
 }
