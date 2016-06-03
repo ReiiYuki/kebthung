@@ -16,6 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.itangqi.waveloadingview.WaveLoadingView;
 import skesw12.kebthung.R;
 import skesw12.kebthung.models.User;
 import skesw12.kebthung.models.Wallet;
@@ -29,7 +30,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
     class ItemViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.wallet_name) TextView text;
+        @BindView(R.id.wallet_name) TextView wallet_name;
+        @BindView(R.id.waveBalance) WaveLoadingView balance_wave;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -70,7 +72,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         if (holder instanceof ItemViewHolder){
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
             Wallet wallet = wallets.get(position);
-            itemHolder.text.setText(wallet.getName());
+            int ratio = (int) (wallet.getBalance()/wallet.getMaxBalance()*100);
+            itemHolder.wallet_name.setText(wallet.getName());
+            itemHolder.balance_wave.setCenterTitle(String.format("%.2f",wallet.getBalance()));
+            itemHolder.balance_wave.setProgressValue(ratio);
         }
     }
 
