@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -257,7 +256,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
-                        showEditNoteDialog(context,note);
+                        showEditNoteDialog(dialogBox.getContext(),note);
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -314,6 +313,18 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showMessegeDialog(Context context,String messege){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(messege)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
