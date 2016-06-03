@@ -248,21 +248,15 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     private void showNoteDetialDialog(final Context context, final Note note){
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.note_detial_dialog,null);
-        Button deleteNoteButton = (Button) view.findViewById(R.id.note_delete_button);
-        deleteNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                note.onDelete();
-            }
-        });
         String noteDetail = String.format("Type : %s\nAmount : %.2f\nDate : %s\nPurpose : %s",note.getType(),note.getAmount(),note.getFormattedTime(),note.getPurpose());
         if (note.getDesName()!=null) noteDetail+="\nDestination "+note.getDesName();
         builder.setView(view)
                 .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
                         showEditNoteDialog(context,note);
                     }
                 })
@@ -273,7 +267,17 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     }
                 })
                 .setMessage(noteDetail);
-        builder.create().show();
+        final Dialog dialog = builder.create();
+        Button deleteNoteButton = (Button) view.findViewById(R.id.note_delete_button);
+        deleteNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                note.onDelete();
+                notifyDataSetChanged();
+                dialog.cancel();
+            }
+        });
+        dialog.show();
     }
 
     private void showDeleteWalletDialog(Context context, final Wallet wallet){
