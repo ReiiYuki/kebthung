@@ -247,7 +247,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showNoteDetialDialog(Context context, final Note note){
+    private void showNoteDetialDialog(final Context context, final Note note){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.note_detial_dialog,null);
         Button deleteNoteButton = (Button) view.findViewById(R.id.note_delete_button);
@@ -263,7 +263,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        showEditNoteDialog(context,note);
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -296,6 +296,25 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     private void showEditNoteDialog(Context context, final Note note){
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.note_edit_dialog,null);
+        EditText editPurposeText = (EditText) view.findViewById(R.id.edit_purpose_input);
+        editPurposeText.setText(note.getPurpose());
+        builder.setView(view)
+                .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
+                        EditText editPurposeText = (EditText) dialogBox.findViewById(R.id.edit_purpose_input);
+                        note.setPurpose(editPurposeText.getText().toString());
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
     }
 }
