@@ -58,4 +58,8 @@
             android:id="@+id/pay_button"
             android:layout_weight="1"/>
     </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_listview"></ListView>
 </LinearLayout>

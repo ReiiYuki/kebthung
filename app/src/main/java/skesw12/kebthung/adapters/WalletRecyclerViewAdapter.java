@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         @BindView(R.id.pay_button) Button payButton;
         @BindView(R.id.get_button) Button getButton;
         @BindView(R.id.transfer_button) Button transferButton;
+        @BindView(R.id.note_listview) ListView noteListView;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);

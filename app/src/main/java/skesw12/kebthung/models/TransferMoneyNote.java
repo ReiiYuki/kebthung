@@ -1,5 +1,7 @@
 package skesw12.kebthung.models;
 
+import android.graphics.Color;
+
 /**
  * Created by YukiReii on 3/6/2559.
  */
@@ -16,6 +18,16 @@ public class TransferMoneyNote extends Note{
         }
 
         @Override
+        public int getColor() {
+            return Color.parseColor("#b3ffff");
+        }
+
+        @Override
+        public String getType() {
+            return "Receive Transfer";
+        }
+
+        @Override
         public void onDelete() {
             wallet.setBalance(wallet.getBalance()-amount);
             des.setBalance(des.getBalance()+amount);
@@ -29,6 +41,16 @@ public class TransferMoneyNote extends Note{
         this.des = des;
         note = new ReceiveTransferMoneyNote(des,wallet,this,purpose,amount);
         des.addNote(note);
+    }
+
+    @Override
+    public int getColor() {
+        return Color.parseColor("#ffc299");
+    }
+
+    @Override
+    public String getType() {
+        return "Transfer";
     }
 
     @Override

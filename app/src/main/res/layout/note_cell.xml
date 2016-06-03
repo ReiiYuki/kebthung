@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/note_purpose_text"
+        android:id="@+id/note_amount_text"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"/>
     <TextView
@@ -20,4 +20,10 @@
         android:id="@+id/note_date_text"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_purpose_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>

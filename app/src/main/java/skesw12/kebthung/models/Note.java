@@ -35,6 +35,7 @@ public abstract class Note {
     public String getFormattedTime(){
         return new SimpleDateFormat("HH:mm:ss \ndd-MM-yyyy").format(new Date(timestamp));
     }
-
+    public abstract int getColor();
+    public abstract String getType();
     public abstract void onDelete();
 }
