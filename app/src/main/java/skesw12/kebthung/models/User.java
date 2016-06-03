@@ -8,10 +8,12 @@ import java.util.List;
  */
 public class User {
     private List<Wallet> wallets;
+    private List<Wish> wishs;
     private String username;
     private static User instance;
     private User(){
         wallets = new ArrayList<Wallet>();
+        wishs = new ArrayList<Wish>();
     }
     public static User getInstance(){
         if (instance==null) {
@@ -35,5 +37,13 @@ public class User {
 
     public void removeWallet(Wallet wallet){
         wallets.remove(wallet);
+    }
+
+    public void addWish(Wish wish){
+        wishs.add(wish);
+    }
+
+    public void removeWish(Wish wish){
+        wishs.remove(wish);
     }
 }
