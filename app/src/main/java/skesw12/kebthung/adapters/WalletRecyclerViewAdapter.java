@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.itangqi.waveloadingview.WaveLoadingView;
 import skesw12.kebthung.R;
+import skesw12.kebthung.models.Note;
 import skesw12.kebthung.models.User;
 import skesw12.kebthung.models.Wallet;
 
@@ -94,6 +96,13 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             }
             final NoteListViewAdapter noteListViewAdapter = new NoteListViewAdapter(context,R.layout.note_cell,wallet.getNotes());
             itemHolder.noteListView.setAdapter(noteListViewAdapter);
+            itemHolder.noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Note note = wallet.getNotes().get(position);
+                    showNoteDetialDialog(context,note);
+                }
+            });
             itemHolder.getButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -238,8 +247,33 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showNoteDetialDialog(){
+    private void showNoteDetialDialog(Context context, final Note note){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.note_detial_dialog,null);
+        Button deleteNoteButton = (Button) view.findViewById(R.id.note_delete_button);
+        deleteNoteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                note.onDelete();
+            }
+        });
+        String noteDetail = String.format("Type : %s\nAmount : %.2f\nDate : %s\nPurpose : %s",note.getType(),note.getAmount(),note.getFormattedTime(),note.getPurpose());
+        if (note.getDesName()!=null) noteDetail+="\nDestination "+note.getDesName();
+        builder.setView(view)
+                .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .setMessage(noteDetail);
+        builder.create().show();
     }
 
     private void showDeleteWalletDialog(Context context, final Wallet wallet){
@@ -259,5 +293,9 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     }
                 });
         builder.create().show();
+    }
+
+    private void showEditNoteDialog(Context context, final Note note){
+
     }
 }
