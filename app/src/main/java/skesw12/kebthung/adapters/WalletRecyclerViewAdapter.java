@@ -145,7 +145,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         }
         return TYPE_ITEM;
     }
-    private void showCreateWalletDialog(Context context){
+    private void showCreateWalletDialog(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         builder.setView(inflater.inflate(R.layout.create_wallet_dialog,null))
@@ -154,8 +154,18 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         EditText nameText = (EditText) dialogBox.findViewById(R.id.wallet_name_input);
+                        String name = nameText.getText().toString();
+                        if (name.equals("")) {
+                            showMessegeDialog(context,"Please Input Name of Wallet!");
+                            return;
+                        }
                         EditText amountText = (EditText) dialogBox.findViewById(R.id.wallet_amount_input);
-                        User.getInstance().addWallet(new Wallet(nameText.getText().toString(),Double.parseDouble(amountText.getText().toString())));
+                        String amountStr = amountText.getText().toString();
+                        if (amountStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Current Amount of Money!");
+                            return;
+                        }
+                        User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amountStr)));
                         notifyDataSetChanged();
                     }
                 })
@@ -167,7 +177,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 });
         builder.create().show();
     }
-    private void showGetMonneyDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
+    private void showGetMonneyDialog(final Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View getDialogView = inflater.inflate(R.layout.get_money_dialog,null);
@@ -177,8 +187,18 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountGetText = (TextView) dialogBox.findViewById(R.id.get_amount_input);
+                        String amountStr = amountGetText.getText().toString();
+                        if (amountStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Amount of Money!");
+                            return;
+                        }
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
-                        wallet.getMoney(purposeText.getText().toString(),Double.parseDouble(amountGetText.getText().toString()));
+                        String purposeStr = purposeText.getText().toString();
+                        if (purposeStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Purpose!");
+                            return;
+                        }
+                        wallet.getMoney(purposeStr,Double.parseDouble(amountStr));
                         notifyDataSetChanged();
                         adapter.notifyDataSetChanged();
                     }
@@ -192,7 +212,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showPayMoneyDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
+    private void showPayMoneyDialog(final Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View payDialogView = inflater.inflate(R.layout.pay_money_dialog,null);
@@ -202,8 +222,18 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
+                        String amountStr = amountPayText.getText().toString();
+                        if (amountStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Amount of Money!");
+                            return;
+                        }
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_pay_box);
-                        wallet.payMoney(purposeText.getText().toString(),Double.parseDouble(amountPayText.getText().toString()));
+                        String purposeStr = purposeText.getText().toString();
+                        if (purposeStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Purpose!");
+                            return;
+                        }
+                        wallet.payMoney(purposeStr,Double.parseDouble(amountStr));
                         notifyDataSetChanged();
                         adapter.notifyDataSetChanged();
                     }
@@ -217,7 +247,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showTransferDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
+    private void showTransferDialog(final Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View getDialogView = inflater.inflate(R.layout.transfer_money_dialog,null);
@@ -229,10 +259,25 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
-                        TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
+                        TextView amountTransferText = (TextView) dialogBox.findViewById(R.id.transfer_amount_input);
                         Spinner transferSpinner = (Spinner) dialogBox.findViewById(R.id.transter_list);
+                        String amountStr = amountTransferText.getText().toString();
+                        if (amountStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Amount of Money!");
+                            return;
+                        }
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_transfer_box);
-                        wallet.transfer(purposeText.getText().toString(),(Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
+                        String purposeStr = purposeText.getText().toString();
+                        if (purposeStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Purpose!");
+                            return;
+                        }
+                        Wallet des = (Wallet) transferSpinner.getSelectedItem();
+                        if (des==null) {
+                            showMessegeDialog(context,"Please Input Destination");
+                            return;
+                        }
+                        wallet.transfer(purposeStr,des ,Double.parseDouble(amountStr));
                         notifyDataSetChanged();
                         adapter.notifyDataSetChanged();
                     }
@@ -298,7 +343,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showEditNoteDialog(Context context, final Note note){
+    private void showEditNoteDialog(final Context context, final Note note){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.note_edit_dialog,null);
         EditText editPurposeText = (EditText) view.findViewById(R.id.edit_purpose_input);
@@ -309,6 +354,11 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         EditText editPurposeText = (EditText) dialogBox.findViewById(R.id.edit_purpose_input);
+                        String purposeStr = editPurposeText.getText().toString();
+                        if (purposeStr.equals("")) {
+                            showMessegeDialog(context,"Please Input Purpose!");
+                            return;
+                        }
                         note.setPurpose(editPurposeText.getText().toString());
                     }
                 })

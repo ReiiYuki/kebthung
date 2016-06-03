@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Amount of Money"
-        android:id="@+id/pay_amount_input"
+        android:id="@+id/transfer_amount_input"
         android:maxLines="1"
         android:inputType="numberDecimal|numberSigned"
         android:singleLine="true"
