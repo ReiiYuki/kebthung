@@ -16,10 +16,10 @@
         android:layout_alignParentTop="true"
         />
     <at.markushi.ui.CircleButton
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="64sp"
+        android:layout_height="64sp"
         app:cb_color="#ff0000"
-        app:cb_pressedRingWidth="8dp"
+        app:cb_pressedRingWidth="8sp"
         android:src="@drawable/cross"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
