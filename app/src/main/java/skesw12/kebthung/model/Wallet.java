@@ -1,41 +1,47 @@
 package skesw12.kebthung.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by YukiReii on 13/5/2559.
+ * Created by YukiReii on 2/6/2559.
  */
 public class Wallet {
+    private String name;
+    private double maxBalance;
     private double balance;
-    private double monthlybalance;
-    private List<Note> noteList;
-    public Wallet(double b){
-        balance = b;
-        monthlybalance=b;
-        noteList = new ArrayList<Note>();
+    public Wallet(String name,double maxBalance){
+        this.name = name;
+        this.maxBalance = maxBalance;
+        this.balance = maxBalance;
     }
-    public void pay(double amount,String reason){
-        noteList.add(new Note(amount,reason));
-        balance-=amount;
-    }
-    public void get(double amount,String reason){
-        noteList.add(new Note(amount,reason));
-        balance+=amount;
-    }
-    public void getMonthly(double amount,String reason){
-        noteList.add(new Note(amount,reason));
-        balance+=amount;
-    }
-    public List<Note> loadNote(){
-        return noteList;
+    public Wallet(double maxBalance){
+        this.name = "Wallet";
+        this.maxBalance = maxBalance;
+        this.balance = maxBalance;
     }
 
     public double getBalance() {
         return balance;
     }
 
-    public double getMonthlybalance() {
-        return monthlybalance;
+    public double getMaxBalance() {
+        return maxBalance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void getMoney(double amount){
+        balance+=amount;
+        if (balance>maxBalance) maxBalance=balance;
+    }
+
+    public boolean payMoney(double amount){
+        if (amount>balance) return false;
+        balance-=amount;
+        return true;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
