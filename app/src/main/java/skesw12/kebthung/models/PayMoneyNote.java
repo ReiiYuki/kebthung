@@ -11,5 +11,6 @@ public class PayMoneyNote extends Note {
     @Override
     public void onDelete() {
         wallet.setBalance(wallet.getBalance()+amount);
+        wallet.removeNote(this);
     }
 }
