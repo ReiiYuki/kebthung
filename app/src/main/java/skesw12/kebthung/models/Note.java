@@ -37,5 +37,6 @@ public abstract class Note {
     }
     public abstract int getColor();
     public abstract String getType();
+    public abstract String getDesName();
     public abstract void onDelete();
 }

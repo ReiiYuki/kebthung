@@ -8,18 +8,17 @@ import android.graphics.Color;
 public class TransferMoneyNote extends Note{
     private Wallet des;
     private ReceiveTransferMoneyNote note;
-    private class ReceiveTransferMoneyNote extends Note{
+    public class ReceiveTransferMoneyNote extends Note{
         private Wallet des;
         private TransferMoneyNote note;
         public ReceiveTransferMoneyNote(Wallet wallet,Wallet des,TransferMoneyNote note, String purpose, double amount) {
-            super(wallet, "Transfer From "+des.getName()+" : "+purpose, amount);
+            super(wallet, des.getName()+" : "+purpose, amount);
             this.des = des;
             this.note = note;
         }
-
         @Override
         public int getColor() {
-            return Color.parseColor("#b3ffff");
+            return android.R.color.holo_blue_light;
         }
 
         @Override
@@ -34,10 +33,15 @@ public class TransferMoneyNote extends Note{
             des.removeNote(note);
             wallet.removeNote(this);
         }
+
+        public String getDesName(){
+            if (des==null) return "From : Wallet not exist!";
+            return "From : "+des.getName();
+        }
     }
 
     public TransferMoneyNote(Wallet wallet,Wallet des, String purpose, double amount) {
-        super(wallet, "Transfer To "+des.getName()+" : "+purpose, amount);
+        super(wallet, des.getName()+" : "+purpose, amount);
         this.des = des;
         note = new ReceiveTransferMoneyNote(des,wallet,this,purpose,amount);
         des.addNote(note);
@@ -45,7 +49,7 @@ public class TransferMoneyNote extends Note{
 
     @Override
     public int getColor() {
-        return Color.parseColor("#ffc299");
+        return android.R.color.holo_orange_light;
     }
 
     @Override
@@ -59,5 +63,10 @@ public class TransferMoneyNote extends Note{
         des.setBalance(des.getBalance()-amount);
         des.removeNote(note);
         wallet.removeNote(this);
+    }
+
+    public String getDesName() {
+        if (des==null) return "To : Wallet not exist!";
+        return "To : "+des.getName();
     }
 }

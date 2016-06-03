@@ -13,12 +13,17 @@ public class GetMoneyNote extends Note{
 
     @Override
     public int getColor() {
-        return Color.parseColor("#66ff66");
+        return android.R.color.holo_green_light;
     }
 
     @Override
     public String getType() {
         return "Get";
+    }
+
+    @Override
+    public String getDesName() {
+        return null;
     }
 
     @Override

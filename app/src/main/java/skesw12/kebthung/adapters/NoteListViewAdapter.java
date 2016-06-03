@@ -11,6 +11,7 @@ import java.util.List;
 
 import skesw12.kebthung.R;
 import skesw12.kebthung.models.Note;
+import skesw12.kebthung.models.TransferMoneyNote;
 
 /**
  * Created by YukiReii on 3/6/2559.
@@ -28,7 +29,12 @@ public class NoteListViewAdapter extends ArrayAdapter<Note>{
             view = vi.inflate(R.layout.note_cell, null);
         }
         Note note = getItem(position);
-        view.setBackgroundColor(note.getColor());
+        if (note instanceof TransferMoneyNote||note instanceof TransferMoneyNote.ReceiveTransferMoneyNote){
+            TextView desText = (TextView) view.findViewById(R.id.note_des_text);
+            desText.setText(note.getDesName());
+            desText.setVisibility(View.VISIBLE);
+        }
+        view.setBackgroundResource(note.getColor());
         TextView typeText = (TextView) view.findViewById(R.id.note_type_text);
         typeText.setText(note.getType());
         TextView purposeText = (TextView) view.findViewById(R.id.note_purpose_text);

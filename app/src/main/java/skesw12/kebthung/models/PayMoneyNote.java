@@ -12,12 +12,17 @@ public class PayMoneyNote extends Note {
 
     @Override
     public int getColor() {
-        return Color.parseColor("#ffb3b3");
+        return android.R.color.holo_red_light;
     }
 
     @Override
     public String getType() {
         return "Pay";
+    }
+
+    @Override
+    public String getDesName() {
+        return null;
     }
 
     @Override
