@@ -15,6 +15,7 @@
         android:id="@+id/wallet_amount_input"
         android:hint="Wallet Amount"
         android:layout_margin="@dimen/fab_margin"
+        android:maxLines="1"
         android:inputType="numberDecimal|numberSigned"
         />
 </LinearLayout>

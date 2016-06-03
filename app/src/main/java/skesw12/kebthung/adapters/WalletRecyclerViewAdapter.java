@@ -156,7 +156,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountGetText = (TextView) dialogBox.findViewById(R.id.get_amount_input);
-                        wallet.getMoney(Double.parseDouble(amountGetText.getText().toString()));
+                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
+                        wallet.getMoney(purposeText.getText().toString(),Double.parseDouble(amountGetText.getText().toString()));
                         notifyDataSetChanged();
                     }
                 })
@@ -179,7 +180,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
-                        wallet.payMoney(Double.parseDouble(amountPayText.getText().toString()));
+                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
+                        wallet.payMoney(purposeText.getText().toString(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                     }
                 })
@@ -206,7 +208,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
                         Spinner transferSpinner = (Spinner) dialogBox.findViewById(R.id.transter_list);
-                        wallet.transfer((Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
+                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
+                        wallet.transfer(purposeText.getText().toString(),(Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                     }
                 })

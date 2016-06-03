@@ -75,6 +75,6 @@ public class Wallet {
     }
 
     void removeNote(Note note){
-        
+        notes.remove(note);
     }
 }

@@ -26,4 +26,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/transter_list"
         android:layout_margin="@dimen/fab_margin"></Spinner>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="5"
+        android:scrollbars="vertical"
+        android:id="@+id/purpose_transfer_box"
+        />
 </LinearLayout>
