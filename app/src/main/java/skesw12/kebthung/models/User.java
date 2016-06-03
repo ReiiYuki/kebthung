@@ -1,4 +1,4 @@
-package skesw12.kebthung.model;
+package skesw12.kebthung.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,15 +9,21 @@ import java.util.List;
 public class User {
     private List<Wallet> wallets;
     private String username;
-    private User instance;
+    private static User instance;
     private User(){
         wallets = new ArrayList<Wallet>();
     }
-    public User getInstance(){
+    public static User getInstance(){
         if (instance==null) {
             instance = new User();
         }
         return instance;
     }
+    public void addWallet(Wallet wallet){
+        wallets.add(wallet);
+    }
 
+    public List<Wallet> getWallets() {
+        return wallets;
+    }
 }

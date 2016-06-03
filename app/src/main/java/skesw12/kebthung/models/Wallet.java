@@ -1,4 +1,4 @@
-package skesw12.kebthung.model;
+package skesw12.kebthung.models;
 
 /**
  * Created by YukiReii on 2/6/2559.
@@ -44,4 +44,5 @@ public class Wallet {
     public void setName(String name) {
         this.name = name;
     }
+
 }
