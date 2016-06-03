@@ -7,9 +7,9 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Wallet" />
         <item
-            android:id="@+id/nav_bank_account"
+            android:id="@+id/nav_wish"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Bank Account" />
+            android:title="Wish" />
         <item
             android:id="@+id/nav_chart"
             android:icon="@drawable/ic_menu_slideshow"
