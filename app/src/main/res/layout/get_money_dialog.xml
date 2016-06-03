@@ -21,11 +21,14 @@
         android:hint="Amount of Money"
         android:id="@+id/get_amount_input"
         android:singleLine="true"
+        android:maxLines="1"
+        android:inputType="numberDecimal|numberSigned"
         android:layout_margin="@dimen/fab_margin"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="5"
+        android:hint="Input your purpose here!"
         android:scrollbars="vertical"
         android:id="@+id/purpose_get_box"
         android:layout_margin="@dimen/fab_margin"

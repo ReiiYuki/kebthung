@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -180,7 +181,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
-                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
+                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_pay_box);
                         wallet.payMoney(purposeText.getText().toString(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                     }
@@ -208,7 +209,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
                         Spinner transferSpinner = (Spinner) dialogBox.findViewById(R.id.transter_list);
-                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
+                        TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_transfer_box);
                         wallet.transfer(purposeText.getText().toString(),(Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                     }

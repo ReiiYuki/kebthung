@@ -1,5 +1,7 @@
 package skesw12.kebthung.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Wallet {
         this.name = name;
         this.maxBalance = maxBalance;
         this.balance = maxBalance;
+        notes = new ArrayList<Note>();
     }
     public Wallet(double maxBalance){
         this.name = "Wallet";
@@ -76,5 +79,9 @@ public class Wallet {
 
     void removeNote(Note note){
         notes.remove(note);
+    }
+
+    public List<Note> getNotes() {
+        return notes;
     }
 }
