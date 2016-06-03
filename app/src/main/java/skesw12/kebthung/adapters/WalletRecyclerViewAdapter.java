@@ -88,10 +88,19 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             itemHolder.wallet_name.setText(wallet.getName());
             itemHolder.balance_wave.setCenterTitle(String.format("%.2f",wallet.getBalance()));
             itemHolder.balance_wave.setProgressValue(ratio);
-            if (ratio<50){
+            if (ratio<=50){
                 itemHolder.balance_wave.setCenterTitleColor(Color.BLACK);
+                if (ratio<=15){
+                    itemHolder.balance_wave.setWaveColor(Color.rgb(255,69,69));
+                    itemHolder.balance_wave.setBorderColor(Color.rgb(255,69,69));
+                }else{
+                    itemHolder.balance_wave.setWaveColor(Color.rgb(255,187,52));
+                    itemHolder.balance_wave.setBorderColor(Color.rgb(255,187,52));
+                }
             }else {
                 itemHolder.balance_wave.setCenterTitleColor(Color.WHITE);
+                itemHolder.balance_wave.setWaveColor(Color.rgb(153,204,1));
+                itemHolder.balance_wave.setBorderColor(Color.rgb(153,204,1));
             }
             final NoteListViewAdapter noteListViewAdapter = new NoteListViewAdapter(context,R.layout.note_cell,wallet.getNotes());
             itemHolder.noteListView.setAdapter(noteListViewAdapter);
