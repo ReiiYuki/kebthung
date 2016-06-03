@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GET"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_margin="@dimen/activity_vertical_margin"/>
+    </LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount of Money"
+        android:id="@+id/get_amount_input"
+        android:layout_margin="@dimen/fab_margin"/>
+</LinearLayout>

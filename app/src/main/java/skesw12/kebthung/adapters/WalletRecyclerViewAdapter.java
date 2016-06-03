@@ -4,11 +4,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     class ItemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.wallet_name) TextView wallet_name;
         @BindView(R.id.waveBalance) WaveLoadingView balance_wave;
+        @BindView(R.id.pay_button) Button payButton;
+        @BindView(R.id.get_button) Button getButton;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -68,14 +71,23 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder){
             ItemViewHolder itemHolder = (ItemViewHolder) holder;
-            Wallet wallet = wallets.get(position);
+            final Wallet wallet = wallets.get(position);
             int ratio = (int) (wallet.getBalance()/wallet.getMaxBalance()*100);
             itemHolder.wallet_name.setText(wallet.getName());
             itemHolder.balance_wave.setCenterTitle(String.format("%.2f",wallet.getBalance()));
             itemHolder.balance_wave.setProgressValue(ratio);
+            if (ratio<50){
+                itemHolder.balance_wave.setCenterTitleColor(Color.BLACK);
+            }
+            itemHolder.getButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showGetMonneyDialog(context,wallet);
+                }
+            });
         }
     }
 
@@ -106,6 +118,28 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         EditText nameText = (EditText) dialogBox.findViewById(R.id.wallet_name_input);
                         EditText amountText = (EditText) dialogBox.findViewById(R.id.wallet_amount_input);
                         User.getInstance().addWallet(new Wallet(nameText.getText().toString(),Double.parseDouble(amountText.getText().toString())));
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+    private void showGetMonneyDialog(Context context, final Wallet wallet){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View getDialogView = inflater.inflate(R.layout.get_money_dialog,null);
+        builder.setView(getDialogView)
+                .setPositiveButton("GET", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
+                        TextView amountGetText = (TextView) dialogBox.findViewById(R.id.get_amount_input);
+                        wallet.getMoney(Double.parseDouble(amountGetText.getText().toString()));
                         notifyDataSetChanged();
                     }
                 })
