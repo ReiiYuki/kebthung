@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import skesw12.kebthung.R;
 import skesw12.kebthung.models.User;
 import skesw12.kebthung.models.Wallet;
@@ -27,9 +29,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_FOOTER = 1;
     class ItemViewHolder extends RecyclerView.ViewHolder {
-
+        @BindView(R.id.wallet_name) TextView text;
         public ItemViewHolder(View view) {
             super(view);
+            ButterKnife.bind(this,view);
         }
     }
 
@@ -64,8 +67,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof FooterViewHolder){
-
+        if (holder instanceof ItemViewHolder){
+            ItemViewHolder itemHolder = (ItemViewHolder) holder;
+            Wallet wallet = wallets.get(position);
+            itemHolder.text.setText(wallet.getName());
         }
     }
 
