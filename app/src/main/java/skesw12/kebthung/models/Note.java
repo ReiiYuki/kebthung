@@ -1,5 +1,7 @@
 package skesw12.kebthung.models;
 
+import android.graphics.Color;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

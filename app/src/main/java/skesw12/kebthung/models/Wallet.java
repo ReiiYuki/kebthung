@@ -56,4 +56,9 @@ public class Wallet {
     public String toString() {
         return name;
     }
+
+    public void setBalance(double balance) {
+        if (balance>maxBalance) maxBalance = balance;
+        this.balance = balance;
+    }
 }
