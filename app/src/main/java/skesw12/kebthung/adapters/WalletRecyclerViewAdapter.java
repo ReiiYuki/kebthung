@@ -90,22 +90,24 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             }else {
                 itemHolder.balance_wave.setCenterTitleColor(Color.WHITE);
             }
+            final NoteListViewAdapter noteListViewAdapter = new NoteListViewAdapter(context,R.layout.note_cell,wallet.getNotes());
+            itemHolder.noteListView.setAdapter(noteListViewAdapter);
             itemHolder.getButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showGetMonneyDialog(context,wallet);
+                    showGetMonneyDialog(context,wallet,noteListViewAdapter);
                 }
             });
             itemHolder.payButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPayMoneyDialog(context,wallet);
+                    showPayMoneyDialog(context,wallet,noteListViewAdapter);
                 }
             });
             itemHolder.transferButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showTransferDialog(context,wallet);
+                    showTransferDialog(context,wallet,noteListViewAdapter);
                 }
             });
         }
@@ -149,7 +151,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 });
         builder.create().show();
     }
-    private void showGetMonneyDialog(Context context, final Wallet wallet){
+    private void showGetMonneyDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View getDialogView = inflater.inflate(R.layout.get_money_dialog,null);
@@ -162,6 +164,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_get_box);
                         wallet.getMoney(purposeText.getText().toString(),Double.parseDouble(amountGetText.getText().toString()));
                         notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -173,7 +176,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showPayMoneyDialog(Context context, final Wallet wallet){
+    private void showPayMoneyDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View payDialogView = inflater.inflate(R.layout.pay_money_dialog,null);
@@ -186,6 +189,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_pay_box);
                         wallet.payMoney(purposeText.getText().toString(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -197,7 +201,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         builder.create().show();
     }
 
-    private void showTransferDialog(Context context, final Wallet wallet){
+    private void showTransferDialog(Context context, final Wallet wallet, final NoteListViewAdapter adapter){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
         View getDialogView = inflater.inflate(R.layout.transfer_money_dialog,null);
@@ -214,6 +218,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         TextView purposeText = (TextView) dialogBox.findViewById(R.id.purpose_transfer_box);
                         wallet.transfer(purposeText.getText().toString(),(Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
