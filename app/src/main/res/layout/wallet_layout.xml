@@ -3,7 +3,8 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/fab_margin">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,14 +42,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PAY"
-            android:id="@+id/pay_button"
+            android:text="GET"
+            android:id="@+id/get_button"
             android:layout_weight="1"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GET"
-            android:id="@+id/get_button"
+            android:text="PAY"
+            android:id="@+id/pay_button"
             android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

@@ -81,11 +81,19 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             itemHolder.balance_wave.setProgressValue(ratio);
             if (ratio<50){
                 itemHolder.balance_wave.setCenterTitleColor(Color.BLACK);
+            }else {
+                itemHolder.balance_wave.setCenterTitleColor(Color.WHITE);
             }
             itemHolder.getButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     showGetMonneyDialog(context,wallet);
+                }
+            });
+            itemHolder.payButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showPayMoneyDialog(context,wallet);
                 }
             });
         }
@@ -140,6 +148,29 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         Dialog dialogBox = (Dialog)dialog;
                         TextView amountGetText = (TextView) dialogBox.findViewById(R.id.get_amount_input);
                         wallet.getMoney(Double.parseDouble(amountGetText.getText().toString()));
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showPayMoneyDialog(Context context, final Wallet wallet){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View getDialogView = inflater.inflate(R.layout.pay_money_dialog,null);
+        builder.setView(getDialogView)
+                .setPositiveButton("PAY", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
+                        TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
+                        wallet.payMoney(Double.parseDouble(amountPayText.getText().toString()));
                         notifyDataSetChanged();
                     }
                 })
