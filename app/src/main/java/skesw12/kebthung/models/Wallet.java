@@ -45,4 +45,15 @@ public class Wallet {
         this.name = name;
     }
 
+    public boolean transfer(Wallet des,double amount){
+        if (balance-amount<0) return false;
+        balance-=amount;
+        des.getMoney(amount);
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

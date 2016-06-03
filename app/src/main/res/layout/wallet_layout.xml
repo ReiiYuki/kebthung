@@ -48,6 +48,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="TRANSFER"
+            android:id="@+id/transfer_button"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="PAY"
             android:id="@+id/pay_button"
             android:layout_weight="1"/>

@@ -26,4 +26,10 @@ public class User {
     public List<Wallet> getWallets() {
         return wallets;
     }
+
+    public List<Wallet> getTransferList(Wallet wallet){
+        List<Wallet> transferList = new ArrayList<Wallet>(wallets);
+        transferList.remove(wallet);
+        return transferList;
+    }
 }

@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +37,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         @BindView(R.id.waveBalance) WaveLoadingView balance_wave;
         @BindView(R.id.pay_button) Button payButton;
         @BindView(R.id.get_button) Button getButton;
+        @BindView(R.id.transfer_button) Button transferButton;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -96,6 +99,12 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     showPayMoneyDialog(context,wallet);
                 }
             });
+            itemHolder.transferButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showTransferDialog(context,wallet);
+                }
+            });
         }
     }
 
@@ -151,7 +160,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         notifyDataSetChanged();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -163,8 +172,8 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private void showPayMoneyDialog(Context context, final Wallet wallet){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
-        View getDialogView = inflater.inflate(R.layout.pay_money_dialog,null);
-        builder.setView(getDialogView)
+        View payDialogView = inflater.inflate(R.layout.pay_money_dialog,null);
+        builder.setView(payDialogView)
                 .setPositiveButton("PAY", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -174,7 +183,34 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                         notifyDataSetChanged();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showTransferDialog(Context context, final Wallet wallet){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View getDialogView = inflater.inflate(R.layout.transfer_money_dialog,null);
+        Spinner transferSpinner = (Spinner) getDialogView.findViewById(R.id.transter_list);
+        ArrayAdapter<Wallet> spinnerAdapter = new ArrayAdapter<Wallet>(context,R.layout.transfer_spinner_layout,User.getInstance().getTransferList(wallet));
+        transferSpinner.setAdapter(spinnerAdapter);
+        builder.setView(getDialogView)
+                .setPositiveButton("TRANSFER", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
+                        TextView amountPayText = (TextView) dialogBox.findViewById(R.id.pay_amount_input);
+                        Spinner transferSpinner = (Spinner) dialogBox.findViewById(R.id.transter_list);
+                        wallet.transfer((Wallet) transferSpinner.getSelectedItem(),Double.parseDouble(amountPayText.getText().toString()));
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
