@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <me.itangqi.waveloadingview.WaveLoadingView
+            android:id="@+id/waveBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            custom:wlv_borderColor="@color/colorAccent"
+            custom:wlv_borderWidth="3dp"
+            custom:wlv_progressValue="90"
+            custom:wlv_shapeType="circle"
+            custom:wlv_titleCenter="Center Title"
+            custom:wlv_titleCenterColor="@android:color/white"
+            custom:wlv_titleCenterSize="24sp"
+            custom:wlv_waveAmplitude="70"
+            custom:wlv_waveColor="@color/colorAccent"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,16 +1,21 @@
 package skesw12.kebthung.adapters;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
 
 import skesw12.kebthung.R;
+import skesw12.kebthung.models.User;
 import skesw12.kebthung.models.Wallet;
 
 /**
@@ -25,7 +30,6 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
 
         public ItemViewHolder(View view) {
             super(view);
-
         }
     }
 
@@ -41,16 +45,19 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         this.wallets = wallets;
     }
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTER){
             View v = LayoutInflater.from (parent.getContext ()).inflate (R.layout.create_wallet_layout, parent, false);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.e(getClass().getName(), "On click");
+                    showCreateWalletDialog(parent.getContext());
                 }
             });
             return new FooterViewHolder(v);
+        }else if (viewType==TYPE_ITEM){
+            View v = LayoutInflater.from (parent.getContext ()).inflate (R.layout.wallet_layout, parent, false);
+            return new ItemViewHolder(v);
         }
         return null;
     }
@@ -63,8 +70,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     private boolean isPositionFooter (int position) {
-        if (wallets.size()==0) return position==0;
-        return position == wallets.size() + 1;
+        return position == wallets.size();
     }
 
     @Override
@@ -78,5 +84,27 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             return TYPE_FOOTER;
         }
         return TYPE_ITEM;
+    }
+    private void showCreateWalletDialog(Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        builder.setView(inflater.inflate(R.layout.create_wallet_dialog,null))
+                .setPositiveButton("Create", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog)dialog;
+                        EditText nameText = (EditText) dialogBox.findViewById(R.id.wallet_name_input);
+                        EditText amountText = (EditText) dialogBox.findViewById(R.id.wallet_amount_input);
+                        User.getInstance().addWallet(new Wallet(nameText.getText().toString(),Double.parseDouble(amountText.getText().toString())));
+                        notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
     }
 }

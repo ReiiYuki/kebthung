@@ -36,7 +36,7 @@ public class Wallet {
     }
 
     public boolean payMoney(double amount){
-        if (amount>balance) return false;
+        if (balance-amount<0) return false;
         balance-=amount;
         return true;
     }

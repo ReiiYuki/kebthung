@@ -38,7 +38,7 @@ public class WalletFragment extends Fragment {
 
     private void setUpRecyclerView(){
         walletRecyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager  layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager  layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         walletRecyclerView.setLayoutManager(layoutManager);
         User u = User.getInstance();
         walletAdapter = new WalletRecyclerViewAdapter(getActivity(),u.getWallets());
