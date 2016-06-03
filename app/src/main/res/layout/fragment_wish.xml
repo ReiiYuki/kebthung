@@ -3,18 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.WishFragment">
-
+    tools:context=".fragments.WishFragment"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:textAlignment="center"
+        android:id="@+id/wish_name"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_alignParentTop="true"
+        android:text="Total"
+        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="275sp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:id="@+id/wish_wave_layout"
+        android:layout_alignBottom="@id/wish_name"
+        android:layout_margin="@dimen/fab_margin"
+        >
         <me.itangqi.waveloadingview.WaveLoadingView
-            android:id="@+id/waveBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/wish_progress_wave"
+            android:layout_width="275sp"
+            android:layout_height="275sp"
             custom:wlv_borderColor="@color/colorAccent"
             custom:wlv_borderWidth="3dp"
             custom:wlv_progressValue="90"
@@ -24,6 +37,35 @@
             custom:wlv_titleCenterSize="24sp"
             custom:wlv_waveAmplitude="70"
             custom:wlv_waveColor="@color/colorAccent"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/wish_wave_layout"
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_wish_button"
+            android:text="ADD WISH"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wish_spinner"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"></Spinner>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wallet_spinner"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_marginBottom="@dimen/fab_margin"></Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
     </LinearLayout>
 
 </LinearLayout>
