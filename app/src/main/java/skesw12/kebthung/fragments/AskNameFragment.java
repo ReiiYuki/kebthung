@@ -30,6 +30,7 @@ public class AskNameFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_ask_name, container, false);
         ButterKnife.bind(this,rootview);
+        initListener();
         return rootview;
     }
     private void initListener(){

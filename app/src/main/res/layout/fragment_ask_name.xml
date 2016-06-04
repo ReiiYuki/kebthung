@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Who're you?"
         android:fontFamily="sans-serif-light"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:layout_margin="@dimen/fab_margin"
         />
     <EditText
@@ -19,6 +19,7 @@
         android:hint="Your Name"
         android:id="@+id/name_text"
         android:singleLine="true"
+        android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         />
     <TextView
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Please Input Your Name !"
         android:fontFamily="sans-serif-light"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textColor="@android:color/holo_red_light"
         android:layout_margin="@dimen/fab_margin"
         android:id="@+id/empty_name_text"

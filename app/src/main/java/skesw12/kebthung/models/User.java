@@ -12,7 +12,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +26,7 @@ public class User implements Serializable{
     private List<Wallet> wallets;
     private List<Wish> wishs;
     private String username;
+    private byte[] passcode;
     private boolean isActive;
     private static User instance;
     private User(){
@@ -79,6 +84,27 @@ public class User implements Serializable{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setPasscode(String passcode){
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            this.passcode = digest.digest(passcode.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(getClass().getName(), "setPasscode: ",e );
+        }
+
+    }
+
+    public boolean authorize(String passcode){
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] passbytes = digest.digest(passcode.getBytes(StandardCharsets.UTF_8));
+            return Arrays.equals(this.passcode,passbytes);
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(getClass().getName(), "setPasscode: ",e );
+        }
+        return false;
     }
 
     public boolean isActive(){
