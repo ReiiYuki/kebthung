@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import skesw12.kebthung.R;
 import skesw12.kebthung.models.User;
+import skesw12.kebthung.models.Wallet;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -226,17 +226,70 @@ public class LoginActivity extends AppCompatActivity {
     }
     class FirstWalletFragment extends Fragment {
 
-
+        @BindView(R.id.wallet_name_input) EditText walletNameText;
+        @BindView(R.id.wallet_amount_input) EditText walletAmountText;
+        @BindView(R.id.warn_name) TextView warnName;
+        @BindView(R.id.warn_amount) TextView warnAmount;
         public FirstWalletFragment() {}
 
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            Log.d(getClass().getName(), "onCreateView: Yes");
-            return inflater.inflate(R.layout.fragment_first_wallet, container, false);
+            View rootview = inflater.inflate(R.layout.fragment_first_wallet, container, false);
+            ButterKnife.bind(this,rootview);
+            initListener();
+            return rootview;
         }
-
+        public void initListener(){
+            walletAmountText.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        String amount = walletAmountText.getText().toString();
+                        if (amount.equals("")){
+                            warnAmount.setVisibility(View.VISIBLE);
+                        }
+                        String name = walletNameText.getText().toString();
+                        if (name.equals("")){
+                            warnName.setVisibility(View.VISIBLE);
+                        }
+                        if (!name.equals("")&&!amount.equals("")){
+                            User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amount)));
+                            User.getInstance().saveFile(getActivity());
+                            User.getInstance().active();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            });
+            walletNameText.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        String amount = walletAmountText.getText().toString();
+                        if (amount.equals("")){
+                            warnAmount.setVisibility(View.VISIBLE);
+                        }
+                        String name = walletNameText.getText().toString();
+                        if (name.equals("")){
+                            warnName.setVisibility(View.VISIBLE);
+                        }
+                        if (!name.equals("")&&!amount.equals("")){
+                            User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amount)));
+                            User.getInstance().saveFile(getActivity());
+                            User.getInstance().active();
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            });
+        }
     }
 }

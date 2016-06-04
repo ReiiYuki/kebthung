@@ -10,12 +10,21 @@
         android:text="What does your wallet call?"
         android:fontFamily="sans-serif-light"
         android:textSize="25sp"
-        android:id="@+id/wallet_name_text"
         android:layout_margin="@dimen/fab_margin"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please input wallet name!"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="15sp"
+        android:id="@+id/warn_name"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/wallet_name_input"
         android:hint="Wallet Name"
         />
     <TextView
@@ -24,13 +33,22 @@
         android:text="How much money in your wallet?"
         android:fontFamily="sans-serif-light"
         android:textSize="25sp"
-        android:id="@+id/name_text"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please input amount of money in your wallet!"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="15sp"
+        android:id="@+id/warn_amount"
         />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/wallet_amount_input"
         android:hint="Amount of Money"
         />
 </LinearLayout>
