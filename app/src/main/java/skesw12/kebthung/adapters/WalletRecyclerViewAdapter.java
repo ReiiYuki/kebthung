@@ -13,9 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -303,8 +306,14 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private void showNoteDetialDialog(final Context context, final Note note){
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.note_detial_dialog,null);
-        String noteDetail = String.format("Type : %s\nAmount : %.2f\nDate : %s\nPurpose : %s",note.getType(),note.getAmount(),note.getFormattedTime(),note.getPurpose());
+        LinearLayout head = (LinearLayout) view.findViewById(R.id.note_head);
+        head.setBackgroundResource(note.getColor());
+        TextView noteType = (TextView) view.findViewById(R.id.note_type_text);
+        TextView noteDetailText = (TextView) view.findViewById(R.id.note_detail_text);
+        noteType.setText(note.getType());
+        String noteDetail = String.format("Amount : %.2f\nDate : %s\nPurpose : %s",note.getAmount(),note.getFormattedTime(),note.getPurpose());
         if (note.getDesName()!=null) noteDetail+="\nDestination "+note.getDesName();
+        noteDetailText.setText(noteDetail);
         builder.setView(view)
                 .setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
                     @Override
@@ -318,8 +327,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
-                })
-                .setMessage(noteDetail);
+                });
         final Dialog dialog = builder.create();
         Button deleteNoteButton = (Button) view.findViewById(R.id.note_delete_button);
         deleteNoteButton.setOnClickListener(new View.OnClickListener() {

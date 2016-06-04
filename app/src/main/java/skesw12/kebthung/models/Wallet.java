@@ -20,12 +20,6 @@ public class Wallet implements Serializable{
         this.balance = maxBalance;
         notes = new ArrayList<Note>();
     }
-    public Wallet(double maxBalance){
-        this.name = "Wallet";
-        this.maxBalance = maxBalance;
-        this.balance = maxBalance;
-        notes = new ArrayList<Note>();
-    }
 
     public double getBalance() {
         return balance;
@@ -50,10 +44,6 @@ public class Wallet implements Serializable{
         balance-=amount;
         notes.add(new PayMoneyNote(this,purpose,amount));
         return true;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public boolean transfer(String purpose,Wallet des,double amount){

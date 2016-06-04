@@ -3,16 +3,35 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_light">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/note_head"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/note_type_text"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:fontFamily="sans-serif-light"
+            />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:id="@+id/note_detail_text"/>
+        android:layout_margin="@dimen/fab_margin"
+        android:id="@+id/note_detail_text"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:text="DELETE NOTE"
         android:textSize="20sp"
+        android:layout_margin="@dimen/fab_margin"
         android:id="@+id/note_delete_button"/>
 </LinearLayout>
