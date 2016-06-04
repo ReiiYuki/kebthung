@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void decideFragment(){
-        if (User.getInstance().getUsername()==null){
+        Log.d("User", "decideFragment: "+User.getInstance().isActive());
+        if (!User.getInstance().isActive()){
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.place_fragement,askNameFragment);
             transaction.commit();
@@ -280,8 +282,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         if (!name.equals("")&&!amount.equals("")){
                             User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amount)));
-                            User.getInstance().saveFile(getActivity());
                             User.getInstance().active();
+                            User.getInstance().saveFile(getActivity());
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                         }
