@@ -1,7 +1,10 @@
 package skesw12.kebthung.fragments;
 
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -185,14 +190,63 @@ public class WishFragment extends Fragment {
     private void showCreateWishDialog(){
         DatePickerDialog.Builder builder = new DatePickerDialog.Builder(getActivity());
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.create_wish_dialog,null);
+        final DatePicker datePicker = (DatePicker) view.findViewById(R.id.wish_datepicker);
+        final CheckBox checkBox = (CheckBox) view.findViewById(R.id.wish_hasdeadline_checkbox);
+        checkBox.setChecked(true);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBox.isChecked()) datePicker.setVisibility(View.VISIBLE);
+                else datePicker.setVisibility(View.GONE);
+            }
+        });
         builder.setView(view)
                 .setPositiveButton("CREATE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Dialog dialogBox = (Dialog) dialog;
+                        Wish.Builder builder = new Wish.Builder();
+                        TextView titleText = (TextView) dialogBox.findViewById(R.id.wish_title_input);
+                        String title = titleText.getText().toString();
+                        if (title.equals("")) {
+                            showMessegeDialog("Please input Wish Title!");
+                            return;
+                        }
+                        builder = builder.setTitle(title);
+                        TextView targetText = (TextView) dialogBox.findViewById(R.id.wish_target_input);
+                        String targetStr = targetText.getText().toString();
+                        if (targetStr.equals("")){
+                            showMessegeDialog("Please input Wish Title!");
+                            return;
+                        }
+                        double target = Double.parseDouble(targetStr);
+                        builder = builder.setTarget(target);
+                        CheckBox hasCheck = (CheckBox) dialogBox.findViewById(R.id.wish_hasdeadline_checkbox);
+                        if (hasCheck.isChecked()){
+                            DatePicker deadlinePicker = (DatePicker) dialogBox.findViewById(R.id.wish_datepicker);
+                            int date = deadlinePicker.getDayOfMonth();
+                            int month = deadlinePicker.getMonth();
+                            int year = deadlinePicker.getYear();
+                            Date deadline = new Date(year,month,date);
+                            builder = builder.setDeadline(deadline);
+                        }
+                        User.getInstance().addWish(builder.build());
+                        wishAdapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showMessegeDialog(String messege){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(messege)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
