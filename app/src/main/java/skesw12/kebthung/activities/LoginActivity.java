@@ -19,7 +19,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import skesw12.kebthung.R;
-import skesw12.kebthung.fragments.FirstWalletFragment;
 import skesw12.kebthung.models.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void addFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.place_fragement,inputPasscodeFragment);
+        transaction.replace(R.id.place_fragement,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
@@ -92,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                         User.getInstance().setUsername(username);
                         emptyNameText.setVisibility(View.GONE);
                         addFragment(inputPasscodeFragment);
+                        return true;
                     }
                     return false;
                 }
@@ -168,6 +168,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (passcode.equals(oldpasscode)){
                                         setNormal();
                                         second = false;
+                                        User.getInstance().setPasscode(passcode);
                                         addFragment(firstWalletFragment);
                                     }else {
                                         setWrong();
@@ -222,5 +223,20 @@ public class LoginActivity extends AppCompatActivity {
                 m.setBackground(getResources().getDrawable(R.drawable.red_circle));
             }
         }
+    }
+    class FirstWalletFragment extends Fragment {
+
+
+        public FirstWalletFragment() {}
+
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            Log.d(getClass().getName(), "onCreateView: Yes");
+            return inflater.inflate(R.layout.fragment_first_wallet, container, false);
+        }
+
     }
 }

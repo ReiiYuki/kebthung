@@ -1,8 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="skesw12.kebthung.fragments.FirstWalletFragment"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -27,7 +25,8 @@
         android:fontFamily="sans-serif-light"
         android:textSize="25sp"
         android:id="@+id/name_text"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
         />
     <EditText
         android:layout_width="wrap_content"
