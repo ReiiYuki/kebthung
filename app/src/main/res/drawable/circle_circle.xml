@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">    android:shape="oval">
+    <item android:drawable="@drawable/ripple_effect"></item>
+    <item android:drawable="@drawable/circle"></item>
+    <item android:drawable="@drawable/cirlce2"></item>
+</layer-list>
