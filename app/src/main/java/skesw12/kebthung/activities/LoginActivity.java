@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (passcode.equals(oldpasscode)){
                                         setNormal();
                                         second = false;
-                                        User.getInstance().setPasscode(passcode);
+                                        User.getInstance().setPasscode(oldpasscode);
                                         addFragment(firstWalletFragment);
                                     }else {
                                         setWrong();
@@ -260,6 +260,8 @@ public class LoginActivity extends AppCompatActivity {
                             User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amount)));
                             User.getInstance().saveFile(getActivity());
                             User.getInstance().active();
+                            User.getInstance().saveFile(getActivity());
+                            User.getInstance().loadFile(getActivity());
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                         }
@@ -284,6 +286,7 @@ public class LoginActivity extends AppCompatActivity {
                             User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amount)));
                             User.getInstance().active();
                             User.getInstance().saveFile(getActivity());
+                            User.getInstance().loadFile(getActivity());
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                         }

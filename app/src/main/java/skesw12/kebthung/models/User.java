@@ -89,7 +89,7 @@ public class User implements Serializable{
     public void setPasscode(String passcode){
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            this.passcode = digest.digest(passcode.getBytes(StandardCharsets.UTF_8));
+            this.passcode = digest.digest(passcode.getBytes());
         } catch (NoSuchAlgorithmException e) {
             Log.e(getClass().getName(), "setPasscode: ",e );
         }
@@ -99,7 +99,7 @@ public class User implements Serializable{
     public boolean authorize(String passcode){
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] passbytes = digest.digest(passcode.getBytes(StandardCharsets.UTF_8));
+            byte[] passbytes = digest.digest(passcode.getBytes());
             return Arrays.equals(this.passcode,passbytes);
         } catch (NoSuchAlgorithmException e) {
             Log.e(getClass().getName(), "setPasscode: ",e );
