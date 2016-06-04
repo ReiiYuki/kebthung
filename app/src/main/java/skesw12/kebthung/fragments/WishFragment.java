@@ -1,6 +1,7 @@
 package skesw12.kebthung.fragments;
 
 
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -54,6 +55,7 @@ public class WishFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_wish, container, false);
         ButterKnife.bind(this,rootView);
+        initializeButton();
         initializeSpinner();
         refresh();
         return rootView;
@@ -91,8 +93,10 @@ public class WishFragment extends Fragment {
             }
         });
     }
-    
+
     private void refresh(){
+        walletAdapter.notifyDataSetChanged();
+        wishAdapter.notifyDataSetChanged();
         double target = 0;
         Date deadline = null;
         int dayLeft = 0;
@@ -160,5 +164,26 @@ public class WishFragment extends Fragment {
             wishProgress.setBorderColor(Color.parseColor("#00bfff"));
             wishProgress.setWaveColor(Color.parseColor("#00bfff"));
         }
+    }
+
+    private void initializeButton(){
+        addWishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCreateWishDialog();
+            }
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
+
+    private void showCreateWishDialog(){
+        DatePickerDialog.Builder builder = new DatePickerDialog.Builder(getActivity());
+
+        builder.create().show();
     }
 }
