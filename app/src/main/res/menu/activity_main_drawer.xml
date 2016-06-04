@@ -14,22 +14,18 @@
             android:id="@+id/nav_chart"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Chart" />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Settings" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Settings" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_about_us"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="About us" />
         </menu>
     </item>
 
