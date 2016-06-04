@@ -1,6 +1,8 @@
 package skesw12.kebthung.models;
 
 
+import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -9,11 +11,11 @@ import java.util.Date;
 public class Wish {
     private String title;
     private double target;
-    private Date deadline;
+    private long deadline;
     public static class Builder{
         private String title;
         private double target;
-        private Date deadline;
+        private long deadline;
 
         public Builder setTitle(String title) {
             this.title = title;
@@ -25,7 +27,7 @@ public class Wish {
             return this;
         }
 
-        public Builder setDeadline(Date deadline) {
+        public Builder setDeadline(long deadline) {
             this.deadline = deadline;
             return this;
         }
@@ -33,7 +35,7 @@ public class Wish {
         public Builder(){
             title = "";
             target = 0;
-            deadline = null;
+            deadline = 0;
         }
         public Wish build(){
             return new Wish(this);
@@ -45,7 +47,7 @@ public class Wish {
         deadline = builder.deadline;
     }
 
-    public Date getDeadline() {
+    public long getDeadline() {
         return deadline;
     }
 
@@ -57,7 +59,7 @@ public class Wish {
         return title;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(long deadline) {
         this.deadline = deadline;
     }
 
@@ -70,7 +72,7 @@ public class Wish {
     }
 
     public int getDaysLeft(){
-        int daysLeft = (int) (deadline.getTime()-System.currentTimeMillis() / (1000*60*60*24));
+        int daysLeft = Math.round((deadline-System.currentTimeMillis()) / (1000f*60f*60f*24f));
         if (daysLeft<0) return 0;
         return daysLeft;
     }

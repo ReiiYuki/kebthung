@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -104,7 +105,7 @@ public class WishFragment extends Fragment {
         walletAdapter.notifyDataSetChanged();
         wishAdapter.notifyDataSetChanged();
         double target = 0;
-        Date deadline = null;
+        long deadline = 0;
         int dayLeft = 0;
         double amount = 0;
         String title = "Total";
@@ -113,17 +114,23 @@ public class WishFragment extends Fragment {
         String dayLeftstr = "";
         if (selectedWish==null){
             for (Wish w:User.getInstance().getWishs()){
-                if (deadline==null) deadline=w.getDeadline();
-                if (deadline.compareTo(w.getDeadline())==1) {
+                if (deadline==0) {
+                    deadline=w.getDeadline();
+                    dayLeft=w.getDaysLeft();
+                }
+                if (deadline>w.getDeadline()) {
                     deadline = w.getDeadline();
                     dayLeft = w.getDaysLeft();
+
                 }
                 target+=w.getTarget();
             }
             targetstr = String.format("Total target : %.2f",target);
             dayLeftstr = String.format("%d Nearest Day Left",dayLeft);
-            if (deadline==null) deadlinestr = "Nearest Deadline : No deadline";
-            else deadlinestr = String.format("Nearest Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(deadline));
+            if (deadline==0) deadlinestr = "Nearest Deadline : No deadline";
+            else {
+                deadlinestr = String.format("Nearest Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(new Date(deadline)));
+            }
         }else {
             target = selectedWish.getTarget();
             deadline = selectedWish.getDeadline();
@@ -131,8 +138,8 @@ public class WishFragment extends Fragment {
             title = selectedWish.getTitle();
             targetstr = String.format("Target : %.2f",target);
             dayLeftstr = String.format("%d Days Left",dayLeft);
-            if (deadline==null) deadlinestr = "Deadline : No deadline";
-            else deadlinestr = String.format("Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(deadline));
+            if (deadline==0) deadlinestr = "Deadline : No deadline";
+            else deadlinestr = String.format("Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(new Date(deadline)));
         }
         if (selectedWallet==null){
             for (Wallet w:User.getInstance().getWallets()){
@@ -157,7 +164,6 @@ public class WishFragment extends Fragment {
             wishProgress.setBorderColor(Color.parseColor("#00ffbf"));
             wishProgress.setWaveColor(Color.parseColor("#00ffbf"));
         }else if (ratio<=50){
-            wishProgress.setCenterTitleColor(Color.BLACK);
             wishProgress.setWaveColor(Color.parseColor("#bfff00"));
             wishProgress.setBorderColor(Color.parseColor("#bfff00"));
         }else if (ratio<=25){
@@ -169,6 +175,11 @@ public class WishFragment extends Fragment {
         }else {
             wishProgress.setBorderColor(Color.parseColor("#00bfff"));
             wishProgress.setWaveColor(Color.parseColor("#00bfff"));
+        }
+        if (ratio<=50){
+            wishProgress.setCenterTitleColor(Color.BLACK);
+        }else {
+            wishProgress.setCenterTitleColor(Color.WHITE);
         }
     }
 
@@ -227,11 +238,13 @@ public class WishFragment extends Fragment {
                             int date = deadlinePicker.getDayOfMonth();
                             int month = deadlinePicker.getMonth();
                             int year = deadlinePicker.getYear();
-                            Date deadline = new Date(year,month,date);
-                            builder = builder.setDeadline(deadline);
+                            Calendar cal = Calendar.getInstance();
+                            cal.set(year,month,date);
+                            builder = builder.setDeadline(cal.getTimeInMillis());
                         }
                         User.getInstance().addWish(builder.build());
                         wishAdapter.notifyDataSetChanged();
+                        refresh();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -242,7 +255,6 @@ public class WishFragment extends Fragment {
                 });
         builder.create().show();
     }
-
     private void showMessegeDialog(String messege){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(messege)

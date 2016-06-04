@@ -1,5 +1,7 @@
 package skesw12.kebthung.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
