@@ -2,13 +2,14 @@ package skesw12.kebthung.models;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  * Created by YukiReii on 3/6/2559.
  */
-public abstract class Note {
+public abstract class Note implements Serializable{
     private long timestamp;
     protected Wallet wallet;
     protected String purpose;

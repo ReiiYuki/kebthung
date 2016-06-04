@@ -2,10 +2,12 @@ package skesw12.kebthung.models;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by YukiReii on 3/6/2559.
  */
-public class PayMoneyNote extends Note {
+public class PayMoneyNote extends Note{
     public PayMoneyNote(Wallet wallet, String purpose, double amount) {
         super(wallet, purpose, amount);
     }

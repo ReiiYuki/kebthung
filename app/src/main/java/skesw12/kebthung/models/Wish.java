@@ -1,14 +1,12 @@
 package skesw12.kebthung.models;
 
 
-import android.util.Log;
-
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by YukiReii on 4/6/2559.
  */
-public class Wish {
+public class Wish implements Serializable{
     private String title;
     private double target;
     private long deadline;

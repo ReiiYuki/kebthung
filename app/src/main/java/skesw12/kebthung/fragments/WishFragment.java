@@ -181,6 +181,7 @@ public class WishFragment extends Fragment {
         }else {
             wishProgress.setCenterTitleColor(Color.WHITE);
         }
+        User.getInstance().saveFile(getActivity());
     }
 
     private void initializeButton(){

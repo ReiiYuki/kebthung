@@ -2,13 +2,14 @@ package skesw12.kebthung.models;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by YukiReii on 2/6/2559.
  */
-public class Wallet {
+public class Wallet implements Serializable{
     private String name;
     private double maxBalance;
     private double balance;

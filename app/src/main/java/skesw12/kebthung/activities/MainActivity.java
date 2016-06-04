@@ -16,6 +16,7 @@ import skesw12.kebthung.fragments.WishFragment;
 import skesw12.kebthung.fragments.ChartFragment;
 import skesw12.kebthung.fragments.SettingFragment;
 import skesw12.kebthung.fragments.WalletFragment;
+import skesw12.kebthung.models.User;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,9 +27,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initFileSetting();
         setUpFragment();
         initFragment();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void initFileSetting(){
+        User.getInstance().loadFile(this);
     }
 
     private void setUpFragment(){

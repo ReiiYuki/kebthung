@@ -2,6 +2,8 @@ package skesw12.kebthung.models;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by YukiReii on 3/6/2559.
  */

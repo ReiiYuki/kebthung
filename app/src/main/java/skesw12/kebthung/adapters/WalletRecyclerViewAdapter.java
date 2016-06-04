@@ -175,7 +175,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             return;
                         }
                         User.getInstance().addWallet(new Wallet(name,Double.parseDouble(amountStr)));
-                        notifyDataSetChanged();
+                        notifyChanged();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -208,7 +208,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             return;
                         }
                         wallet.getMoney(purposeStr,Double.parseDouble(amountStr));
-                        notifyDataSetChanged();
+                        notifyChanged();
                         adapter.notifyDataSetChanged();
                     }
                 })
@@ -243,7 +243,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             return;
                         }
                         wallet.payMoney(purposeStr,Double.parseDouble(amountStr));
-                        notifyDataSetChanged();
+                        notifyChanged();
                         adapter.notifyDataSetChanged();
                     }
                 })
@@ -287,7 +287,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             return;
                         }
                         wallet.transfer(purposeStr,des ,Double.parseDouble(amountStr));
-                        notifyDataSetChanged();
+                        notifyChanged();
                         adapter.notifyDataSetChanged();
                     }
                 })
@@ -326,7 +326,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             @Override
             public void onClick(View v) {
                 note.onDelete();
-                notifyDataSetChanged();
+                notifyChanged();
                 dialog.cancel();
             }
         });
@@ -340,7 +340,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         User.getInstance().removeWallet(wallet);
-                        notifyDataSetChanged();
+                        notifyChanged();
                     }
                 })
                 .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -390,5 +390,9 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     }
                 });
         builder.create().show();
+    }
+    private void notifyChanged(){
+        notifyDataSetChanged();
+        User.getInstance().saveFile(context);
     }
 }
