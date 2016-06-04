@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/wish_purpose"
+                android:id="@+id/wish_target"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
@@ -107,12 +107,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/wish_amount"
+                android:id="@+id/wish_left"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="dummy"
                 android:textSize="20sp"
-                android:background="@android:color/holo_red_light"
+                android:background="@android:color/holo_blue_bright"
                 android:textColor="@android:color/white"
                 android:minHeight="?android:attr/listPreferredItemHeight"
                 />
@@ -123,7 +123,7 @@
                 android:id="@+id/wish_days"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:background="@android:color/holo_blue_bright"
+                android:background="@android:color/holo_red_light"
                 android:textColor="@android:color/white"
                 android:text="dummy"
                 android:minHeight="?android:attr/listPreferredItemHeight"/>

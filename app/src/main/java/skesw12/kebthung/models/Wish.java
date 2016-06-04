@@ -8,22 +8,15 @@ import java.util.Date;
  */
 public class Wish {
     private String title;
-    private String purpose;
     private double target;
     private Date deadline;
     public static class Builder{
         private String title;
-        private String purpose;
         private double target;
         private Date deadline;
 
         public Builder setTitle(String title) {
             this.title = title;
-            return this;
-        }
-
-        public Builder setPurpose(String purpose) {
-            this.purpose = purpose;
             return this;
         }
 
@@ -39,7 +32,6 @@ public class Wish {
 
         public Builder(){
             title = "";
-            purpose = "";
             target = 0;
             deadline = null;
         }
@@ -49,13 +41,8 @@ public class Wish {
     }
     private Wish(Builder builder){
         title = builder.title;
-        purpose = builder.purpose;
         target = builder.target;
         deadline = builder.deadline;
-    }
-
-    public String getPurpose() {
-        return purpose;
     }
 
     public Date getDeadline() {
@@ -76,10 +63,6 @@ public class Wish {
 
     public void setTarget(double target) {
         this.target = target;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
     }
 
     public void setTitle(String title) {
