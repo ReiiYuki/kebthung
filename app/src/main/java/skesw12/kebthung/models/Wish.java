@@ -17,20 +17,24 @@ public class Wish {
         private double target;
         private Date deadline;
 
-        public void setTitle(String title) {
+        public Builder setTitle(String title) {
             this.title = title;
+            return this;
         }
 
-        public void setPurpose(String purpose) {
+        public Builder setPurpose(String purpose) {
             this.purpose = purpose;
+            return this;
         }
 
-        public void setTarget(double target) {
+        public Builder setTarget(double target) {
             this.target = target;
+            return this;
         }
 
-        public void setDeadline(Date deadline) {
+        public Builder setDeadline(Date deadline) {
             this.deadline = deadline;
+            return this;
         }
 
         public Builder(){
@@ -80,5 +84,11 @@ public class Wish {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getDaysLeft(){
+        int daysLeft = (int) (deadline.getTime()-System.currentTimeMillis() / (1000*60*60*24));
+        if (daysLeft<0) return 0;
+        return daysLeft;
     }
 }

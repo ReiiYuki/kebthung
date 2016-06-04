@@ -46,4 +46,8 @@ public class User {
     public void removeWish(Wish wish){
         wishs.remove(wish);
     }
+
+    public List<Wish> getWishs() {
+        return wishs;
+    }
 }

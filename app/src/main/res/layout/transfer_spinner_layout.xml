@@ -4,6 +4,7 @@
     android:layout_margin="@dimen/fab_margin"
     android:textSize="20sp"
     android:textAlignment="center"
+    android:id="@+id/spinner_item"
     >
 
 </TextView>

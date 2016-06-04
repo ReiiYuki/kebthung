@@ -14,15 +14,17 @@
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_alignParentTop="true"
         android:text="Total"
+        android:layout_weight="0"
         />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="275sp"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:id="@+id/wish_wave_layout"
         android:layout_alignBottom="@id/wish_name"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_weight="0"
         >
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/wish_progress_wave"
@@ -42,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/wish_wave_layout"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="0">
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,18 +56,49 @@
             android:layout_height="wrap_content"
             android:id="@+id/wish_spinner"
             android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginBottom="@dimen/fab_margin"></Spinner>
+            ></Spinner>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/wallet_spinner"
             android:layout_marginTop="@dimen/fab_margin"
-            android:layout_marginBottom="@dimen/fab_margin"></Spinner>
+            ></Spinner>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/wish_purpose"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:background="@android:color/holo_orange_light"
+                android:text="dummy"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:id="@+id/wish_deadline"
+                android:background="@android:color/holo_green_light"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                android:textSize="20sp"
+                android:text="dummy"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -72,8 +106,27 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/wish_amount"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="dummy"
+                android:textSize="20sp"
+                android:background="@android:color/holo_red_light"
+                android:textColor="@android:color/white"
+                android:minHeight="?android:attr/listPreferredItemHeight"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/wish_days"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:background="@android:color/holo_blue_bright"
+                android:textColor="@android:color/white"
+                android:text="dummy"
+                android:minHeight="?android:attr/listPreferredItemHeight"/>
         </LinearLayout>
     </LinearLayout>
 
