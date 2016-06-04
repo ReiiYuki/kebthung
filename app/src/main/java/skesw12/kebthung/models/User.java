@@ -63,6 +63,12 @@ public class User implements Serializable{
         return wishs;
     }
 
+    public void reset(){
+        username = null;
+        wallets = new ArrayList<Wallet>();
+        wishs = new ArrayList<Wish>();
+    }
+
     public void saveFile(Context context){
         try {
             FileOutputStream fileOutputStream = context.openFileOutput("usr.kt",Context.MODE_PRIVATE);

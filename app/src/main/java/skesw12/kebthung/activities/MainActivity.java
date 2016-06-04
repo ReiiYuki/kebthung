@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
         settingFragment = new SettingFragment();
     }
 
-    private void initFragment(){
+    public void initFragment(){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.place_fragement,walletFragment);
         transaction.commit();
