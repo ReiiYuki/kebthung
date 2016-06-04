@@ -2,5 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wish_title"
+        android:hint="Wish Title"
+        android:layout_margin="@dimen/fab_margin"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wish_target"
+        android:hint="Target Amount"
+        android:layout_margin="@dimen/fab_margin"/>
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wish_hasdeadline_checkbox"
+        android:text="Has Deadline"
+        android:layout_margin="@dimen/fab_margin"/>
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wish_datepicker"
+        android:layout_margin="@dimen/fab_margin"></DatePicker>
 </LinearLayout>

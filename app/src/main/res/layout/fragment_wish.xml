@@ -84,7 +84,6 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:background="@android:color/holo_orange_light"
-                android:text="dummy"
                 android:minHeight="?android:attr/listPreferredItemHeight"
                 />
             <TextView
@@ -97,7 +96,7 @@
                 android:background="@android:color/holo_green_light"
                 android:minHeight="?android:attr/listPreferredItemHeight"
                 android:textSize="20sp"
-                android:text="dummy"/>
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -110,7 +109,6 @@
                 android:id="@+id/wish_left"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="dummy"
                 android:textSize="20sp"
                 android:background="@android:color/holo_blue_bright"
                 android:textColor="@android:color/white"
@@ -125,7 +123,6 @@
                 android:textSize="20sp"
                 android:background="@android:color/holo_red_light"
                 android:textColor="@android:color/white"
-                android:text="dummy"
                 android:minHeight="?android:attr/listPreferredItemHeight"/>
         </LinearLayout>
     </LinearLayout>

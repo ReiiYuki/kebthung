@@ -2,6 +2,7 @@ package skesw12.kebthung.fragments;
 
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -183,7 +184,20 @@ public class WishFragment extends Fragment {
 
     private void showCreateWishDialog(){
         DatePickerDialog.Builder builder = new DatePickerDialog.Builder(getActivity());
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.create_wish_dialog,null);
+        builder.setView(view)
+                .setPositiveButton("CREATE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
         builder.create().show();
     }
 }
