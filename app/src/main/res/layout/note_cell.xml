@@ -19,6 +19,7 @@
             android:layout_weight="1"
             android:textColor="@android:color/white"
             android:textSize="30sp"
+            android:fontFamily="sans-serif-light"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -27,6 +28,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             android:visibility="gone"
             />
         <TextView
@@ -34,6 +36,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/note_date_text"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             />
@@ -52,6 +55,7 @@
             android:id="@+id/note_amount_text"
             android:textAlignment="viewEnd"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             />
@@ -61,6 +65,7 @@
             android:id="@+id/note_purpose_text"
             android:textAlignment="viewEnd"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             android:textSize="25sp"
             android:textColor="@android:color/white"
             />

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="skesw12.kebthung.fragments.SettingFragment"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@android:color/background_light">
 
     <Button
         android:layout_width="wrap_content"
@@ -12,6 +13,8 @@
         android:id="@+id/reset_button"
         android:gravity="center"
         android:layout_margin="@dimen/fab_margin"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
         />
 
 </RelativeLayout>

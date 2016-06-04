@@ -5,13 +5,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/fab_margin">
+    android:layout_margin="@dimen/fab_margin"
+    android:background="@android:color/background_light">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="50sp"
         android:textAlignment="center"
         android:id="@+id/wallet_name"
+        android:fontFamily="sans-serif-light"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_alignParentTop="true"
         />
@@ -43,9 +45,10 @@
             custom:wlv_borderWidth="3dp"
             custom:wlv_shapeType="circle"
             custom:wlv_titleCenterColor="@android:color/white"
-            custom:wlv_titleCenterSize="40dp"
+            custom:wlv_titleCenterSize="40sp"
             custom:wlv_waveAmplitude="70"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
             custom:wlv_waveColor="@color/colorAccent"/>
     </LinearLayout>
     <LinearLayout
@@ -58,19 +61,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GET"
+            android:textSize="20sp"
             android:id="@+id/get_button"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TRANSFER"
+            android:textSize="20sp"
             android:id="@+id/transfer_button"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PAY"
+            android:textSize="20sp"
             android:id="@+id/pay_button"
+            android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
     </LinearLayout>
     <LinearLayout
@@ -86,6 +95,7 @@
             android:id="@+id/note_listview"
             android:dividerHeight="5.0sp"
             android:divider="@android:color/transparent"
+            android:fontFamily="sans-serif-light"
             ></ListView>
     </LinearLayout>
 

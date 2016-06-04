@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WishFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/background_light">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:text="Total"
         android:layout_weight="0"
+        android:fontFamily="sans-serif-light"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,12 +34,12 @@
             android:layout_height="275sp"
             custom:wlv_borderColor="@color/colorAccent"
             custom:wlv_borderWidth="3dp"
-            custom:wlv_progressValue="90"
             custom:wlv_shapeType="circle"
             custom:wlv_titleCenter="Center Title"
             custom:wlv_titleCenterColor="@android:color/white"
-            custom:wlv_titleCenterSize="24sp"
+            custom:wlv_titleCenterSize="50sp"
             custom:wlv_waveAmplitude="70"
+            android:fontFamily="sans-serif-light"
             custom:wlv_waveColor="@color/colorAccent"/>
     </LinearLayout>
     <LinearLayout
@@ -50,17 +52,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/add_wish_button"
+            android:fontFamily="sans-serif-light"
+            android:textSize="20sp"
             android:text="ADD WISH"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/wish_spinner"
+            android:fontFamily="sans-serif-light"
             android:layout_marginTop="@dimen/fab_margin"
             ></Spinner>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/wallet_spinner"
+            android:fontFamily="sans-serif-light"
             android:layout_marginTop="@dimen/fab_margin"
             ></Spinner>
     </LinearLayout>
@@ -82,6 +88,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
                 android:textColor="@android:color/white"
                 android:background="@android:color/holo_orange_light"
                 android:minHeight="?android:attr/listPreferredItemHeight"
@@ -92,6 +99,7 @@
                 android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:gravity="center"
+                android:fontFamily="sans-serif-light"
                 android:id="@+id/wish_deadline"
                 android:background="@android:color/holo_green_light"
                 android:minHeight="?android:attr/listPreferredItemHeight"
@@ -109,6 +117,7 @@
                 android:id="@+id/wish_left"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:fontFamily="sans-serif-light"
                 android:textSize="20sp"
                 android:background="@android:color/holo_blue_bright"
                 android:textColor="@android:color/white"
@@ -120,6 +129,7 @@
                 android:layout_weight="1"
                 android:id="@+id/wish_days"
                 android:gravity="center"
+                android:fontFamily="sans-serif-light"
                 android:textSize="20sp"
                 android:background="@android:color/holo_red_light"
                 android:textColor="@android:color/white"

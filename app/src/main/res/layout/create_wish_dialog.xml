@@ -7,12 +7,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/wish_title_input"
         android:hint="Wish Title"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light"
         android:layout_margin="@dimen/fab_margin"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wish_target_input"
         android:hint="Target Amount"
+        android:singleLine="true"
+        android:inputType="numberDecimal|numberSigned"
+        android:fontFamily="sans-serif-light"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"/>
@@ -21,12 +26,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/wish_hasdeadline_checkbox"
         android:text="Has Deadline"
+        android:fontFamily="sans-serif-light"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"/>
     <DatePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wish_datepicker"
+        android:fontFamily="sans-serif-light"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"></DatePicker>

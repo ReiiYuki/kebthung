@@ -5,6 +5,7 @@
     android:textSize="20sp"
     android:textAlignment="center"
     android:id="@+id/spinner_item"
+    android:fontFamily="sans-serif-light"
     >
 
 </TextView>
