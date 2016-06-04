@@ -1,6 +1,7 @@
 package skesw12.kebthung.activities;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initFragment();
+        decideFragment();
     }
 
     private void initFragment(){
@@ -31,6 +33,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void decideFragment(){
-        if (User.getInstance())
+        if (User.getInstance().getUsername()==null){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.place_fragement,askNameFragment);
+            transaction.commit();
+        }else{
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.place_fragement,inputPasscodeFragment);
+            transaction.commit();
+        }
     }
 }

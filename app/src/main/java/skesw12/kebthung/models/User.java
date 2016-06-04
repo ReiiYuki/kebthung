@@ -22,10 +22,13 @@ public class User implements Serializable{
     private List<Wallet> wallets;
     private List<Wish> wishs;
     private String username;
+    private boolean isActive;
     private static User instance;
     private User(){
         wallets = new ArrayList<Wallet>();
         wishs = new ArrayList<Wish>();
+        isActive = false;
+        username = null;
     }
     public static User getInstance(){
         if (instance==null) {
@@ -65,8 +68,25 @@ public class User implements Serializable{
 
     public void reset(){
         username = null;
+        isActive = false;
         wallets = new ArrayList<Wallet>();
         wishs = new ArrayList<Wish>();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isActive(){
+        return isActive;
+    }
+
+    public void active(){
+        isActive=true;
     }
 
     public void saveFile(Context context){
