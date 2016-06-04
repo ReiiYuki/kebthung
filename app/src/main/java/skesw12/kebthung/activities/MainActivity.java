@@ -28,14 +28,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initFileSetting();
         setUpFragment();
         initFragment();
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    private void initFileSetting(){
-        User.getInstance().loadFile(this);
     }
 
     private void setUpFragment(){

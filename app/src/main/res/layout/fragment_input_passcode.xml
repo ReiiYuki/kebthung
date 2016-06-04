@@ -1,8 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.InputPasscodeFragment"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -13,7 +11,6 @@
         android:gravity="center"
         android:id="@+id/circle_group"
         android:layout_margin="@dimen/fab_margin"
-        android:visibility="gone"
         >
         <ImageView
             android:layout_width="50sp"
@@ -50,15 +47,13 @@
         android:fontFamily="sans-serif-light"
         android:textSize="25sp"
         android:id="@+id/title"
-        android:layout_margin="@dimen/fab_margin"
-        android:visibility="gone"/>
+        android:layout_margin="@dimen/fab_margin" />
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/numpad"
         android:columnCount="3"
         android:orientation="horizontal"
-        android:visibility="gone"
         >
         <Button
             android:text="1"
@@ -66,53 +61,62 @@
             android:height="100sp"
             android:textSize="25sp"
             android:background="@drawable/ripple_effect"
+            android:id="@+id/num_1"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="2"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_2"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="3"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_3"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="4"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_4"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="5"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_5"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="6"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_6"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="7"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_7"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="8"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_8"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <Button android:text="9"
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_9"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
         <TextView />
@@ -120,6 +124,7 @@
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_0"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"
             />
@@ -127,17 +132,9 @@
             android:width="100sp"
             android:height="100sp"
             android:textSize="25sp"
+            android:id="@+id/num_x"
             android:background="@drawable/ripple_effect"
             android:fontFamily="sans-serif-light"/>
     </GridLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Who're you?"
-        android:fontFamily="sans-serif-light"
-        android:textSize="25sp"
-        android:id="@+id/name_text"
-        android:layout_margin="@dimen/fab_margin"
-        />
 
 </LinearLayout>
