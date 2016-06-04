@@ -60,15 +60,6 @@ public class WishSpinnerAdapter extends ArrayAdapter<Wish> {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view==null){
-            LayoutInflater vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.transfer_spinner_layout, null);
-        }
-        TextView spinnerItem = (TextView) view.findViewById(R.id.spinner_item);
-        Wish wish = getItem(position);
-        if (position==0) spinnerItem.setText("Total");
-        else spinnerItem.setText(wish.getTitle());
-        return view;
+        return getView(position,convertView,parent);
     }
 }

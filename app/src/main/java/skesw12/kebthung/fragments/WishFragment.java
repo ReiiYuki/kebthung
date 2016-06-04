@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.itangqi.waveloadingview.WaveLoadingView;
 import skesw12.kebthung.R;
+import skesw12.kebthung.adapters.WalletSpinnerAdapter;
 import skesw12.kebthung.adapters.WishSpinnerAdapter;
 import skesw12.kebthung.models.User;
 import skesw12.kebthung.models.Wallet;
@@ -52,7 +53,7 @@ public class WishFragment extends Fragment {
     }
 
     private void initializeSpinner(){
-        walletAdapter = new ArrayAdapter<Wallet>(getActivity(),R.layout.transfer_spinner_layout, User.getInstance().getWallets());
+        walletAdapter = new WalletSpinnerAdapter(getActivity(),R.layout.transfer_spinner_layout, User.getInstance().getWallets());
         walletSpinner.setAdapter(walletAdapter);
         wishAdapter = new WishSpinnerAdapter(getActivity(),R.layout.transfer_spinner_layout,User.getInstance().getWishs());
         wishSpinner.setAdapter(wishAdapter);
