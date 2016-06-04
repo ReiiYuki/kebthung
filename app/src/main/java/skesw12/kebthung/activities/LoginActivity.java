@@ -1,5 +1,6 @@
 package skesw12.kebthung.activities;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -8,26 +9,28 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import skesw12.kebthung.R;
+import skesw12.kebthung.fragments.AskNameFragment;
+import skesw12.kebthung.fragments.FirstWalletFragment;
+import skesw12.kebthung.fragments.InputPasscodeFragment;
+import skesw12.kebthung.models.User;
 
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.pin1) ImageView pin1;
-    @BindView(R.id.pin2) ImageView pin2;
-    @BindView(R.id.pin3) ImageView pin3;
-    @BindView(R.id.pin4) ImageView pin4;
-    private ImageView[] imageViews;
+
+    private Fragment askNameFragment,firstWalletFragment,inputPasscodeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
-        initPinCodeCircle();
+        initFragment();
     }
-    private void initPinCodeCircle(){
-        imageViews = new ImageView[]{pin1, pin2, pin3, pin4};
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        lp.setMargins(16,16,16,16);
-//        for (ImageView m : imageViews){
-//            m.setLayoutParams(lp);
-//        }
+
+    private void initFragment(){
+        askNameFragment = new AskNameFragment();
+        firstWalletFragment = new FirstWalletFragment();
+        inputPasscodeFragment = new InputPasscodeFragment();
+    }
+
+    private void decideFragment(){
+        if (User.getInstance())
     }
 }

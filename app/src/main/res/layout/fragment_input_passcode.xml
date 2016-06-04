@@ -1,0 +1,143 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.InputPasscodeFragment"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/circle_group"
+        android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/circle"
+            android:id="@+id/pin1"
+            />
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/circle"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:id="@+id/pin2"
+            />
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/circle"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:id="@+id/pin3"
+            />
+        <ImageView
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/circle"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:id="@+id/pin4"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Input your passcode"
+        android:fontFamily="sans-serif-light"
+        android:textSize="25sp"
+        android:id="@+id/title"
+        android:layout_margin="@dimen/fab_margin"
+        android:visibility="gone"/>
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numpad"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <Button
+            android:text="1"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="2"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="3"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="4"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="5"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="6"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="7"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="8"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <Button android:text="9"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+        <TextView />
+        <Button android:text="0"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"
+            />
+        <Button android:text="X"
+            android:width="100sp"
+            android:height="100sp"
+            android:textSize="25sp"
+            android:background="@drawable/ripple_effect"
+            android:fontFamily="sans-serif-light"/>
+    </GridLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who're you?"
+        android:fontFamily="sans-serif-light"
+        android:textSize="25sp"
+        android:id="@+id/name_text"
+        android:layout_margin="@dimen/fab_margin"
+        />
+
+</LinearLayout>
