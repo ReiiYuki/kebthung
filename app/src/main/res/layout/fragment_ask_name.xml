@@ -29,6 +29,7 @@
         android:textColor="@android:color/holo_red_light"
         android:layout_margin="@dimen/fab_margin"
         android:id="@+id/empty_name_text"
+        android:textAlignment="center"
         android:visibility="gone"
         />
 </LinearLayout>

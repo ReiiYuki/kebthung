@@ -34,6 +34,8 @@
         android:text="How much money in your wallet?"
         android:fontFamily="sans-serif-light"
         android:textSize="25sp"
+        android:singleLine="true"
+        android:textAlignment="center"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin"
         />
@@ -52,5 +54,8 @@
         android:fontFamily="sans-serif-light"
         android:id="@+id/wallet_amount_input"
         android:hint="Amount of Money"
+        android:textAlignment="center"
+        android:inputType="numberDecimal|numberSigned"
+        android:singleLine="true"
         />
 </LinearLayout>
