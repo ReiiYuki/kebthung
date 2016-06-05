@@ -4,23 +4,71 @@
     android:layout_height="match_parent"
     tools:context="skesw12.kebthung.fragments.AboutUsFragment"
     android:background="@android:color/background_light"
+    android:orientation="vertical"
     android:gravity="center">
-
+    <ImageView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/kebthung"
+        />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="About Us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kebthung"
         android:textSize="50sp"
         android:layout_margin="@dimen/fab_margin"
         android:gravity="center"
         android:fontFamily="sans-serif-light"
         />
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:text=""
+        android:gravity="center"
+        android:id="@+id/github_me"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="The money management application\nDevelop by\nVoraton Lerattanapaisal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="Software and Knowledge Engineering Student\nKasetsart University\nINNOMA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="Special Thank!"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/github_wave"
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:id="@+id/github_circle"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/github_williamchart"
+        android:gravity="center"
         />
 
 </LinearLayout>
