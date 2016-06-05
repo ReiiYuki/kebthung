@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import at.markushi.ui.CircleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.itangqi.waveloadingview.WaveLoadingView;
@@ -49,6 +51,8 @@ public class WishFragment extends Fragment {
     @BindView(R.id.wish_left) TextView wishLeftText;
     @BindView(R.id.wish_deadline) TextView wishDeadlineText;
     @BindView(R.id.wish_days) TextView wishDaysLeftText;
+    @BindView(R.id.edit_button) CircleButton editButton;
+    @BindView(R.id.success_button) CircleButton successButton;
     private ArrayAdapter<Wallet> walletAdapter;
     private ArrayAdapter<Wish> wishAdapter;
     private Wish selectedWish;
@@ -99,6 +103,18 @@ public class WishFragment extends Fragment {
                 refresh();
             }
         });
+        successButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showClearDialog();
+            }
+        });
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEditWishDialog();
+            }
+        });
     }
 
     private void refresh(){
@@ -113,6 +129,8 @@ public class WishFragment extends Fragment {
         String deadlinestr = "";
         String dayLeftstr = "";
         if (selectedWish==null){
+            successButton.setVisibility(View.GONE);
+            editButton.setVisibility(View.GONE);
             for (Wish w:User.getInstance().getWishs()){
                 if (deadline==0) {
                     deadline=w.getDeadline();
@@ -132,6 +150,8 @@ public class WishFragment extends Fragment {
                 deadlinestr = String.format("Nearest Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(new Date(deadline)));
             }
         }else {
+            successButton.setVisibility(View.VISIBLE);
+            editButton.setVisibility(View.VISIBLE);
             target = selectedWish.getTarget();
             deadline = selectedWish.getDeadline();
             dayLeft = selectedWish.getDaysLeft();
@@ -218,14 +238,14 @@ public class WishFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         Dialog dialogBox = (Dialog) dialog;
                         Wish.Builder builder = new Wish.Builder();
-                        TextView titleText = (TextView) dialogBox.findViewById(R.id.wish_title_input);
+                        EditText titleText = (EditText) dialogBox.findViewById(R.id.wish_title_input);
                         String title = titleText.getText().toString();
                         if (title.equals("")) {
                             showMessegeDialog("Please input Wish Title!");
                             return;
                         }
                         builder = builder.setTitle(title);
-                        TextView targetText = (TextView) dialogBox.findViewById(R.id.wish_target_input);
+                        EditText targetText = (EditText) dialogBox.findViewById(R.id.wish_target_input);
                         String targetStr = targetText.getText().toString();
                         if (targetStr.equals("")){
                             showMessegeDialog("Please input Wish Title!");
@@ -260,6 +280,84 @@ public class WishFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(messege)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+    private void showEditWishDialog(){
+        DatePickerDialog.Builder builder = new DatePickerDialog.Builder(getActivity());
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.create_wish_dialog,null);
+        EditText titleText = (EditText) view.findViewById(R.id.wish_title_input);
+        titleText.setText(selectedWish.getTitle());
+        EditText targetText = (EditText) view.findViewById(R.id.wish_target_input);
+        targetText.setText(Double.toString(selectedWish.getTarget()));
+        final DatePicker datePicker = (DatePicker) view.findViewById(R.id.wish_datepicker);
+        final CheckBox checkBox = (CheckBox) view.findViewById(R.id.wish_hasdeadline_checkbox);
+        checkBox.setChecked(true);
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBox.isChecked()) datePicker.setVisibility(View.VISIBLE);
+                else datePicker.setVisibility(View.GONE);
+            }
+        });
+        builder.setView(view)
+                .setPositiveButton("CREATE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog) dialog;
+                        EditText titleText = (EditText) dialogBox.findViewById(R.id.wish_title_input);
+                        String title = titleText.getText().toString();
+                        if (title.equals("")) {
+                            showMessegeDialog("Please input Wish Title!");
+                            return;
+                        }
+                        EditText targetText = (EditText) dialogBox.findViewById(R.id.wish_target_input);
+                        String targetStr = targetText.getText().toString();
+                        if (targetStr.equals("")){
+                            showMessegeDialog("Please input Wish Title!");
+                            return;
+                        }
+                        double target = Double.parseDouble(targetStr);
+                        CheckBox hasCheck = (CheckBox) dialogBox.findViewById(R.id.wish_hasdeadline_checkbox);
+                        Calendar cal = Calendar.getInstance();
+                        if (hasCheck.isChecked()){
+                            DatePicker deadlinePicker = (DatePicker) dialogBox.findViewById(R.id.wish_datepicker);
+                            int date = deadlinePicker.getDayOfMonth();
+                            int month = deadlinePicker.getMonth();
+                            int year = deadlinePicker.getYear();
+                            cal.set(year,month,date);
+                        }
+                        selectedWish.setTitle(title);
+                        selectedWish.setTarget(target);
+                        selectedWish.setDeadline(cal.getTimeInMillis());
+                        wishAdapter.notifyDataSetChanged();
+                        refresh();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void showClearDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Sure to clear "+selectedWish.getTitle()+"?")
+                .setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        User.getInstance().removeWish(selectedWish);
+                        wishAdapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
