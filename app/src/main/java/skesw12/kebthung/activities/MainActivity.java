@@ -95,4 +95,5 @@ public class MainActivity extends AppCompatActivity
         TextView titleText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.textView);
         titleText.setText(User.getInstance().getUsername());
     }
+
 }

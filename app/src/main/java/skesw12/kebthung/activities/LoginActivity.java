@@ -180,6 +180,9 @@ public class LoginActivity extends AppCompatActivity {
                             }else {
                                 if (User.getInstance().authorize(passcode)){
                                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     startActivity(intent);
                                 }else {
                                     setWrong();
@@ -263,6 +266,9 @@ public class LoginActivity extends AppCompatActivity {
                             User.getInstance().saveFile(getActivity());
                             User.getInstance().loadFile(getActivity());
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             startActivity(intent);
                         }
                         return true;
@@ -288,6 +294,9 @@ public class LoginActivity extends AppCompatActivity {
                             User.getInstance().saveFile(getActivity());
                             User.getInstance().loadFile(getActivity());
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             startActivity(intent);
                         }
                         return true;
