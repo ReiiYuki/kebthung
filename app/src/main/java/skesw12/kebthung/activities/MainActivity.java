@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setTitle(){
+    public void setTitle(){
         TextView titleText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.textView);
         titleText.setText(User.getInstance().getUsername());
     }
