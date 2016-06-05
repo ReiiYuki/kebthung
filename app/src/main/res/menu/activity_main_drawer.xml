@@ -4,17 +4,17 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_local_atm_black_24dp"
             android:fontFamily="sans-serif-light"
             android:title="Wallet" />
         <item
             android:id="@+id/nav_wish"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_card_giftcard_black_24dp"
             android:fontFamily="sans-serif-light"
             android:title="Wish" />
         <item
             android:id="@+id/nav_chart"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_show_chart_black_24dp"
             android:fontFamily="sans-serif-light"
             android:title="Chart" />
     </group>
@@ -29,7 +29,7 @@
                 android:title="Settings" />
             <item
                 android:id="@+id/nav_about_us"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_chrome_reader_mode_black_24dp"
                 android:fontFamily="sans-serif-light"
                 android:title="About us" />
         </menu>

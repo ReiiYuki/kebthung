@@ -5,15 +5,19 @@
     android:gravity="center"
     >
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_circle_outline_black_48dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CREATE WALLET"
             android:gravity="center"
-            android:textSize="50sp"
+            android:textSize="40sp"
             android:fontFamily="sans-serif-light"
             android:id="@+id/create_wallet_label"
             android:layout_weight="1"
