@@ -49,7 +49,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chnage Password"
+                android:text="Change Password"
                 android:id="@+id/edit_password_button"
                 android:gravity="center"
                 android:layout_margin="@dimen/fab_margin"

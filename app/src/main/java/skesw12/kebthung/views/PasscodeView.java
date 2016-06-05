@@ -1,11 +1,9 @@
 package skesw12.kebthung.views;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,9 +12,8 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import skesw12.kebthung.HelperListener;
+import skesw12.kebthung.helperinterfaces.HelperListener;
 import skesw12.kebthung.R;
-import skesw12.kebthung.activities.MainActivity;
 import skesw12.kebthung.models.User;
 
 /**
