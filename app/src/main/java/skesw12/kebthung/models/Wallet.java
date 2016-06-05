@@ -33,7 +33,11 @@ public class Wallet implements Serializable{
         return name;
     }
 
-    public void getMoney(String purpose,double amount){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void getMoney(String purpose, double amount){
         balance+=amount;
         if (balance>maxBalance) maxBalance=balance;
         notes.add(new GetMoneyNote(this,purpose,amount));

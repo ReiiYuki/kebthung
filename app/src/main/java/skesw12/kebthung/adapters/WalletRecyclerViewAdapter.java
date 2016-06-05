@@ -47,6 +47,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
         @BindView(R.id.transfer_button) Button transferButton;
         @BindView(R.id.note_listview) ListView noteListView;
         @BindView(R.id.delete_wallet_button) CircleButton deleteWalletButton;
+        @BindView(R.id.edit_button) CircleButton editButton;
         public ItemViewHolder(View view) {
             super(view);
             ButterKnife.bind(this,view);
@@ -136,6 +137,12 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                 @Override
                 public void onClick(View v) {
                     showDeleteWalletDialog(context,wallet);
+                }
+            });
+            itemHolder.editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showEditWalletDialog(context,wallet);
                 }
             });
         }
@@ -245,7 +252,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             showMessegeDialog(context,"Please Input Purpose!");
                             return;
                         }
-                        wallet.payMoney(purposeStr,Double.parseDouble(amountStr));
+                        if(!wallet.payMoney(purposeStr,Double.parseDouble(amountStr))){
+                            showMessegeDialog(context,"Don't have enough money!");
+                            return;
+                        }
                         notifyChanged();
                         adapter.notifyDataSetChanged();
                     }
@@ -289,7 +299,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                             showMessegeDialog(context,"Please Input Destination");
                             return;
                         }
-                        wallet.transfer(purposeStr,des ,Double.parseDouble(amountStr));
+                        if (!wallet.transfer(purposeStr,des ,Double.parseDouble(amountStr))){
+                            showMessegeDialog(context,"Don't have enough money!");
+                            return;
+                        }
                         notifyChanged();
                         adapter.notifyDataSetChanged();
                     }
@@ -402,5 +415,32 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     private void notifyChanged(){
         notifyDataSetChanged();
         User.getInstance().saveFile(context);
+    }
+    private void showEditWalletDialog(final Context context, final Wallet wallet){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.edit_wallet_dialog,null);
+        EditText editText = (EditText) view.findViewById(R.id.wallet_name_input);
+        editText.setText(wallet.getName());
+        builder.setView(view)
+                .setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dialog dialogBox = (Dialog) dialog;
+                        EditText nameText = (EditText) dialogBox.findViewById(R.id.wallet_name_input);
+                        if (nameText.getText().toString().equals("")){
+                            showMessegeDialog(context,"Please Input Wallet Name!");
+                            return;
+                        }
+                        wallet.setName(nameText.getText().toString());
+                        notifyChanged();
+                    }
+                })
+                .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
     }
 }
