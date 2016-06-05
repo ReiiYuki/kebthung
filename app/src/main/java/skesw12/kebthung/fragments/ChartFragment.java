@@ -66,7 +66,7 @@ public class ChartFragment extends Fragment {
         return rootview;
     }
     private void initSpinner(){
-        final WalletSpinnerAdapter adapter = new WalletSpinnerAdapter(getActivity(),R.layout.transfer_spinner_layout,User.getInstance().getWallets());
+        final WalletSpinnerAdapter adapter = new WalletSpinnerAdapter(getActivity(),R.layout.wallet_spinner,User.getInstance().getWallets());
         walletSpinner.setAdapter(adapter);
         walletSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
