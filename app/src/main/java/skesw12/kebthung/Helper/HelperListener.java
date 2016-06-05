@@ -1,4 +1,4 @@
-package skesw12.kebthung.helperinterfaces;
+package skesw12.kebthung.Helper;
 
 /**
  * Created by YukiReii on 6/5/2016.
