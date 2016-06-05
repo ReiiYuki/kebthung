@@ -45,4 +45,9 @@ public class NoteListViewAdapter extends ArrayAdapter<Note>{
         dateText.setText(note.getFormattedTime());
         return view;
     }
+
+    @Override
+    public Note getItem(int position) {
+        return super.getItem(getCount()-position-1);
+    }
 }
