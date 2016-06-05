@@ -40,6 +40,12 @@ public class TransferMoneyNote extends Note{
             if (des==null) return "From : Wallet not exist!";
             return "From : "+des.getName();
         }
+
+        @Override
+        public void setPurpose(String purpose) {
+            this.purpose = purpose;
+            note.purpose = purpose;
+        }
     }
 
     public TransferMoneyNote(Wallet wallet,Wallet des, String purpose, double amount) {
@@ -57,6 +63,12 @@ public class TransferMoneyNote extends Note{
     @Override
     public String getType() {
         return "Transfer";
+    }
+
+    @Override
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+        note.purpose = purpose;
     }
 
     @Override

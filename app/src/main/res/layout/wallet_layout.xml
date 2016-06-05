@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/fab_margin"
     android:background="@android:color/background_light">
+    <at.markushi.ui.CircleButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        app:cb_color="#1aa3ff"
+        android:layout_alignParentLeft="true"
+        app:cb_pressedRingWidth="8sp"
+        android:src="@drawable/ic_create_white_36dp"
+        android:id="@+id/edit_button"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +31,7 @@
         android:layout_height="64sp"
         app:cb_color="#ff0000"
         app:cb_pressedRingWidth="8sp"
-        android:src="@drawable/cross"
+        android:src="@drawable/ic_clear_white_48dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:id="@+id/delete_wallet_button"

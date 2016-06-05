@@ -3,21 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WishFragment"
     android:orientation="vertical"
     android:background="@android:color/background_light">
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:textAlignment="center"
-        android:id="@+id/wish_name"
-        android:layout_marginTop="@dimen/fab_margin"
-        android:layout_alignParentTop="true"
-        android:text="Total"
-        android:layout_weight="0"
-        android:fontFamily="sans-serif-light"
-        />
+        android:orientation="horizontal">
+        <at.markushi.ui.CircleButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:cb_color="#1aa3ff"
+            android:layout_alignParentLeft="true"
+            app:cb_pressedRingWidth="8sp"
+            android:src="@drawable/ic_create_white_36dp"
+            android:id="@+id/edit_button"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textAlignment="center"
+            android:id="@+id/wish_name"
+            android:layout_marginTop="@dimen/fab_margin"
+            android:layout_alignParentTop="true"
+            android:text="Total"
+            android:layout_weight="0"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            />
+        <at.markushi.ui.CircleButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            app:cb_color="#00e600"
+            app:cb_pressedRingWidth="8sp"
+            android:id="@+id/success_button"
+            android:src="@drawable/ic_done_white_48dp"
+            android:layout_alignParentRight="true"
+            />
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
