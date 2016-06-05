@@ -9,7 +9,7 @@
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card1"
         android:layout_width="match_parent"
-        android:layout_height="200sp"
+        android:layout_height="wrap_content"
         card_view:cardBackgroundColor="@android:color/holo_orange_light"
         card_view:cardCornerRadius="@dimen/cardview_default_radius">
         <LinearLayout
@@ -22,9 +22,9 @@
                 android:id="@+id/chart1_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/fab_margin"
                 android:text="Test"
-                android:textSize="16sp"
+                android:textSize="30sp"
                 android:textColor="#ffffff"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"/>
@@ -33,7 +33,7 @@
                 android:id="@+id/amount_chart"
                 android:layout_alignBottom="@+id/chart1_title"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"/>
