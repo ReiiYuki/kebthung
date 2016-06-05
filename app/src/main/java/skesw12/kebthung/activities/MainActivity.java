@@ -8,6 +8,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         setUpFragment();
         initFragment();
+        setTitle();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -87,5 +89,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setTitle(){
+        TextView titleText = (TextView) navigationView.getHeaderView(0).findViewById(R.id.textView);
+        titleText.setText(User.getInstance().getUsername());
     }
 }

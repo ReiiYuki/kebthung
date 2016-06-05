@@ -9,6 +9,27 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Change Username"
+        android:id="@+id/edit_username_button"
+        android:gravity="center"
+        android:layout_margin="@dimen/fab_margin"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chnage Password"
+        android:id="@+id/edit_password_button"
+        android:gravity="center"
+        android:layout_margin="@dimen/fab_margin"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_alignBottom=""
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Reset Account"
         android:id="@+id/reset_button"
         android:gravity="center"
@@ -16,5 +37,4 @@
         android:textSize="20sp"
         android:fontFamily="sans-serif-light"
         />
-
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -55,9 +57,10 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
     class FooterViewHolder extends RecyclerView.ViewHolder {
-
+        @BindView(R.id.plus) ImageView plus;
         public FooterViewHolder (View view) {
             super (view);
+            ButterKnife.bind(this,view);
         }
     }
 
@@ -145,6 +148,9 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
                     showEditWalletDialog(context,wallet);
                 }
             });
+        }else {
+            FooterViewHolder footerHolder = (FooterViewHolder) holder;
+            footerHolder.plus.setColorFilter(R.color.colorPrimary, PorterDuff.Mode.MULTIPLY);
         }
     }
 
