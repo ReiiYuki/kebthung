@@ -5,36 +5,70 @@
     tools:context="skesw12.kebthung.fragments.SettingFragment"
     android:gravity="center"
     android:background="@android:color/background_light">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:divider="@drawable/seperator"
+        android:showDividers="middle"
+        android:adjustViewBounds="true"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/img"
+                android:src="@drawable/ic_build_black_48dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="30sp"
+                android:fontFamily="sans-serif-light"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Username"
+                android:id="@+id/edit_username_button"
+                android:gravity="center"
+                android:layout_margin="@dimen/fab_margin"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chnage Password"
+                android:id="@+id/edit_password_button"
+                android:gravity="center"
+                android:layout_margin="@dimen/fab_margin"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                android:layout_alignBottom="@id/edit_username_button"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset Account"
+                android:id="@+id/reset_button"
+                android:gravity="center"
+                android:layout_margin="@dimen/fab_margin"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                android:layout_alignBottom="@id/edit_password_button"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Username"
-        android:id="@+id/edit_username_button"
-        android:gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-light"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chnage Password"
-        android:id="@+id/edit_password_button"
-        android:gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_alignBottom=""
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reset Account"
-        android:id="@+id/reset_button"
-        android:gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        android:textSize="20sp"
-        android:fontFamily="sans-serif-light"
-        />
 </RelativeLayout>

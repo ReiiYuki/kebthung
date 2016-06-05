@@ -1,12 +1,14 @@
 package skesw12.kebthung.fragments;
 
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,6 +22,7 @@ import skesw12.kebthung.models.User;
 public class SettingFragment extends Fragment {
 
     @BindView(R.id.reset_button) Button resetButton;
+    @BindView(R.id.img) ImageView img;
     public SettingFragment() {}
 
 
@@ -29,6 +32,7 @@ public class SettingFragment extends Fragment {
         // Inflate the layout for this fragment
         View  rootview  = inflater.inflate(R.layout.fragment_setting, container, false);
         ButterKnife.bind(this,rootview);
+        changeColor();
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,5 +43,8 @@ public class SettingFragment extends Fragment {
         });
         return rootview;
     }
-
+    private void changeColor(){
+        img.setColorFilter(R.color.colorPrimary, PorterDuff.Mode.MULTIPLY);
+    }
+    
 }
