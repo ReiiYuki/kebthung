@@ -8,6 +8,7 @@
         android:id="@+id/wallet_name_input"
         android:hint="Wallet Name"
         android:singleLine="true"
+        android:maxLength="10"
         android:fontFamily="sans-serif-light"
         android:layout_margin="@dimen/fab_margin"
         />

@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    class AskNameFragment extends Fragment {
+    public class AskNameFragment extends Fragment {
 
         @BindView(R.id.name_text)
         EditText usernameText;
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
-    class InputPasscodeFragment extends Fragment {
+    public class InputPasscodeFragment extends Fragment {
         @BindView(R.id.pin1) ImageView pin1;
         @BindView(R.id.pin2) ImageView pin2;
         @BindView(R.id.pin3) ImageView pin3;
@@ -229,7 +229,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-    class FirstWalletFragment extends Fragment {
+    public class FirstWalletFragment extends Fragment {
 
         @BindView(R.id.wallet_name_input) EditText walletNameText;
         @BindView(R.id.wallet_amount_input) EditText walletAmountText;

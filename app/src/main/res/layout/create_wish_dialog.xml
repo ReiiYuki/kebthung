@@ -7,6 +7,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/wish_title_input"
         android:hint="Wish Title"
+        android:maxLength="10"
         android:singleLine="true"
         android:fontFamily="sans-serif-light"
         android:layout_margin="@dimen/fab_margin"/>

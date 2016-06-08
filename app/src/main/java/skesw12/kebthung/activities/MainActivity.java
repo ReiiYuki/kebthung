@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        User.getInstance().saveFile(this);
     }
 
 

@@ -114,7 +114,7 @@ public class WalletRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
             itemHolder.noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Note note = wallet.getNotes().get(position);
+                    Note note = noteListViewAdapter.getItem(position);
                     showNoteDetialDialog(context,note);
                 }
             });
