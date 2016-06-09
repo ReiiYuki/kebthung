@@ -3,7 +3,7 @@
     <dimen name="dp_40">40dp</dimen>
     <dimen name="dp_128">128dp</dimen>
     <dimen name="dp_50">50dp</dimen>
-    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_20">15dp</dimen>
     <dimen name="dp_15">12dp</dimen>
     <dimen name="dp_30">30dp</dimen>
     <dimen name="dp_300">300dp</dimen>
