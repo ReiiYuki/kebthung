@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <at.markushi.ui.CircleButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_64"
             app:cb_color="#1aa3ff"
             android:layout_alignParentLeft="true"
-            app:cb_pressedRingWidth="8sp"
+            app:cb_pressedRingWidth="@dimen/dp_8"
             android:src="@drawable/ic_create_white_36dp"
             android:id="@+id/edit_button"
             android:visibility="gone"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="50sp"
+            android:textSize="@dimen/dp_50"
             android:textAlignment="center"
             android:id="@+id/wish_name"
             android:layout_marginTop="@dimen/fab_margin"
@@ -35,10 +35,10 @@
             android:gravity="center"
             />
         <at.markushi.ui.CircleButton
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_64"
             app:cb_color="#00e600"
-            app:cb_pressedRingWidth="8sp"
+            app:cb_pressedRingWidth="@dimen/dp_8"
             android:id="@+id/success_button"
             android:src="@drawable/ic_done_white_48dp"
             android:layout_alignParentRight="true"
@@ -58,14 +58,14 @@
         >
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/wish_progress_wave"
-            android:layout_width="275sp"
-            android:layout_height="275sp"
+            android:layout_width="@dimen/dp_275"
+            android:layout_height="@dimen/dp_275"
             custom:wlv_borderColor="@color/colorAccent"
-            custom:wlv_borderWidth="3dp"
+            custom:wlv_borderWidth="@dimen/dp_3"
             custom:wlv_shapeType="circle"
             custom:wlv_titleCenter="Center Title"
             custom:wlv_titleCenterColor="@android:color/white"
-            custom:wlv_titleCenterSize="50sp"
+            custom:wlv_titleCenterSize="@dimen/dp_50"
             custom:wlv_waveAmplitude="70"
             android:fontFamily="sans-serif-light"
             custom:wlv_waveColor="@color/colorAccent"/>
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/add_wish_button"
             android:fontFamily="sans-serif-light"
-            android:textSize="20sp"
+            android:textSize="@dimen/dp_20"
             android:text="ADD WISH"/>
         <Spinner
             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                 android:id="@+id/wish_target"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@android:color/white"
                 android:background="@android:color/holo_orange_light"
@@ -131,7 +131,7 @@
                 android:id="@+id/wish_deadline"
                 android:background="@android:color/holo_green_light"
                 android:minHeight="?android:attr/listPreferredItemHeight"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 />
         </LinearLayout>
         <LinearLayout
@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:background="@android:color/holo_blue_bright"
                 android:textColor="@android:color/white"
                 android:minHeight="?android:attr/listPreferredItemHeight"
@@ -158,7 +158,7 @@
                 android:id="@+id/wish_days"
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:background="@android:color/holo_red_light"
                 android:textColor="@android:color/white"
                 android:minHeight="?android:attr/listPreferredItemHeight"/>

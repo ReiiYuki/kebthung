@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
-                android:textSize="40sp"
+                android:textSize="@dimen/dp_40"
                 android:fontFamily="sans-serif-light"/>
         </LinearLayout>
         <LinearLayout
@@ -43,7 +43,7 @@
                 android:id="@+id/edit_username_button"
                 android:gravity="center"
                 android:layout_margin="@dimen/fab_margin"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:fontFamily="sans-serif-light"
                 />
             <Button
@@ -53,7 +53,7 @@
                 android:id="@+id/edit_password_button"
                 android:gravity="center"
                 android:layout_margin="@dimen/fab_margin"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:fontFamily="sans-serif-light"
                 android:layout_alignBottom="@id/edit_username_button"
                 />
@@ -64,7 +64,7 @@
                 android:id="@+id/reset_button"
                 android:gravity="center"
                 android:layout_margin="@dimen/fab_margin"
-                android:textSize="20sp"
+                android:textSize="@dimen/dp_20"
                 android:fontFamily="sans-serif-light"
                 android:layout_alignBottom="@id/edit_password_button"
                 />

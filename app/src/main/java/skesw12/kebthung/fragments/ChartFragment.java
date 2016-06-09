@@ -116,7 +116,7 @@ public class ChartFragment extends Fragment {
         amountChart.addData(dataset);
         Log.d(getClass().getName(), "initChart: "+Math.round(max/10));
         amountChart.setStep(ChartDetailHelper.getInstance().getMaxRatio());
-        amountChart.setFontSize(40);
+        amountChart.setFontSize((int) (getResources().getDimension(R.dimen.dp_30)/getResources().getDisplayMetrics().density));
         amountChart.setLabelsColor(Color.WHITE);
         Runnable chartAction = new Runnable() {
             @Override
@@ -159,7 +159,8 @@ public class ChartFragment extends Fragment {
                     if (i < 0) {
                         tempCal.setTimeInMillis(now);
                         label[count] = tempCal.get(Calendar.DATE) + "/" + (tempCal.get(Calendar.MONTH) + 1);
-                        if (now>=create) values[count--]=(float) amount;
+                        if (now>=create) values[count]=(float) amount;
+                        count--;
                         if (values[count+1]>max) max = values[count+1];
                         now -= 86400000;
                     } else {

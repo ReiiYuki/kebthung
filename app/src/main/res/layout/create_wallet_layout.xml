@@ -10,8 +10,8 @@
         android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/dp_64"
+            android:layout_height="@dimen/dp_64"
             android:id="@+id/plus"
             android:src="@drawable/ic_add_circle_outline_black_48dp"
             />
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CREATE WALLET"
-            android:textSize="40sp"
+            android:textSize="@dimen/dp_40"
             android:fontFamily="sans-serif-light"
             android:id="@+id/create_wallet_label"
             android:layout_weight="1"

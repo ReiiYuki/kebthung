@@ -8,18 +8,18 @@
     android:layout_margin="@dimen/fab_margin"
     android:background="@android:color/background_light">
     <at.markushi.ui.CircleButton
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
         app:cb_color="#1aa3ff"
         android:layout_alignParentLeft="true"
-        app:cb_pressedRingWidth="8sp"
+        app:cb_pressedRingWidth="@dimen/dp_8"
         android:src="@drawable/ic_create_white_36dp"
         android:id="@+id/edit_button"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:textSize="@dimen/dp_50"
         android:textAlignment="center"
         android:id="@+id/wallet_name"
         android:fontFamily="sans-serif-light"
@@ -27,10 +27,10 @@
         android:layout_alignParentTop="true"
         />
     <at.markushi.ui.CircleButton
-        android:layout_width="64sp"
-        android:layout_height="64sp"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
         app:cb_color="#ff0000"
-        app:cb_pressedRingWidth="8sp"
+        app:cb_pressedRingWidth="@dimen/dp_8"
         android:src="@drawable/ic_clear_white_48dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -38,7 +38,7 @@
         />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="275sp"
+        android:layout_height="@dimen/dp_275"
         android:orientation="vertical"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
@@ -51,10 +51,10 @@
             android:layout_width="wrap_content"
             android:layout_height="0dip"
             custom:wlv_borderColor="@color/colorAccent"
-            custom:wlv_borderWidth="3dp"
+            custom:wlv_borderWidth="@dimen/dp_3"
             custom:wlv_shapeType="circle"
             custom:wlv_titleCenterColor="@android:color/white"
-            custom:wlv_titleCenterSize="40sp"
+            custom:wlv_titleCenterSize="@dimen/dp_40"
             custom:wlv_waveAmplitude="70"
             android:layout_weight="1"
             android:fontFamily="sans-serif-light"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GET"
-            android:textSize="15dp"
+            android:textSize="@dimen/dp_15"
             android:id="@+id/get_button"
             android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TRANSFER"
-            android:textSize="15dp"
+            android:textSize="@dimen/dp_15"
             android:id="@+id/transfer_button"
             android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PAY"
-            android:textSize="15dp"
+            android:textSize="@dimen/dp_15"
             android:id="@+id/pay_button"
             android:fontFamily="sans-serif-light"
             android:layout_weight="2"/>
@@ -102,7 +102,7 @@
             android:layout_height="0dip"
             android:layout_weight="3"
             android:id="@+id/note_listview"
-            android:dividerHeight="5.0sp"
+            android:dividerHeight="@dimen/dp_5"
             android:divider="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             ></ListView>

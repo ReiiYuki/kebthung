@@ -14,7 +14,7 @@
             android:id="@+id/note_type_text"
             android:textColor="@android:color/white"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/dp_20"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:fontFamily="sans-serif-light"
             />
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:text="DELETE NOTE"
-        android:textSize="20sp"
+        android:textSize="@dimen/dp_20"
         android:layout_margin="@dimen/fab_margin"
         android:id="@+id/note_delete_button"/>
 </LinearLayout>

@@ -13,7 +13,7 @@
             android:text="TRANSFER"
             android:textColor="@android:color/white"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/dp_20"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:fontFamily="sans-serif-light"
             />

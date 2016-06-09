@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_40">30dp</dimen>
+    <dimen name="dp_128">128dp</dimen>
+    <dimen name="dp_50">25dp</dimen>
+    <dimen name="dp_20">15dp</dimen>
+    <dimen name="dp_15">10dp</dimen>
+    <dimen name="dp_30">12dp</dimen>
+    <dimen name="dp_300">200dp</dimen>
+    <dimen name="dp_25">15dp</dimen>
+    <dimen name="dp_100">50dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_275">175dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="fab_margin">4dp</dimen>
+</resources>

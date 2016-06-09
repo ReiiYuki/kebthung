@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/fab_margin"
                 android:text="Change of Money\n in a Week"
-                android:textSize="40sp"
+                android:textSize="@dimen/dp_40"
                 android:textColor="#ffffff"
                 android:fontFamily="sans-serif-light"
                 android:layout_centerHorizontal="true"
@@ -35,7 +35,7 @@
                 android:id="@+id/amount_chart"
                 android:layout_alignBottom="@+id/chart1_title"
                 android:layout_width="match_parent"
-                android:layout_height="300sp"
+                android:layout_height="@dimen/dp_300"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="15dp"/>

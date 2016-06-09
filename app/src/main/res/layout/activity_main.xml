@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/place_fragement"
-        android:layout_margin="30dp"
+        android:layout_margin="@dimen/dp_30"
         ></FrameLayout>
 
     <android.support.design.widget.NavigationView

@@ -5,15 +5,15 @@
     android:gravity="center"
     android:background="@android:color/background_light">
     <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
         android:src="@drawable/kebthung"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Who're you?"
         android:fontFamily="sans-serif-light"
-        android:textSize="30sp"
+        android:textSize="@dimen/dp_30"
         android:layout_margin="@dimen/fab_margin"
         />
     <EditText
@@ -22,7 +22,7 @@
         android:hint="Your Name"
         android:id="@+id/name_text"
         android:singleLine="true"
-        android:textSize="20sp"
+        android:textSize="@dimen/dp_20"
         android:fontFamily="sans-serif-light"
         />
     <TextView
@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:text="Please Input Your Name !"
         android:fontFamily="sans-serif-light"
-        android:textSize="20sp"
         android:textColor="@android:color/holo_red_light"
         android:layout_margin="@dimen/fab_margin"
         android:id="@+id/empty_name_text"

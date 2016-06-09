@@ -145,7 +145,7 @@ public class WishFragment extends Fragment {
             }
             targetstr = String.format("Total target : %.2f",target);
             dayLeftstr = String.format("%d Nearest Day Left",dayLeft);
-            if (deadline==0) deadlinestr = "Nearest Deadline : No deadline";
+            if (deadline==0) deadlinestr = "Nearest Deadline :\nNo deadline";
             else {
                 deadlinestr = String.format("Nearest Deadline : %s",new SimpleDateFormat("dd-MM-yyyy").format(new Date(deadline)));
             }

@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_64"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:src="@drawable/kebthung" />
 
@@ -25,7 +25,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="KebThung"
         android:fontFamily="sans-serif-light"
-        android:textSize="20sp"
+        android:textSize="@dimen/dp_20"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
