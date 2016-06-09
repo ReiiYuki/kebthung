@@ -14,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import skesw12.kebthung.R;
 import skesw12.kebthung.fragments.AboutUsFragment;
+import skesw12.kebthung.fragments.WhatsNewFragment;
 import skesw12.kebthung.fragments.WishFragment;
 import skesw12.kebthung.fragments.ChartFragment;
 import skesw12.kebthung.fragments.SettingFragment;
@@ -23,7 +24,7 @@ import skesw12.kebthung.models.User;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.nav_view) NavigationView navigationView;
-    Fragment walletFragment,wishFragment,chartFragment,settingFragment,aboutusFragment;
+    Fragment walletFragment,wishFragment,chartFragment,settingFragment,aboutusFragment,announcementFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         chartFragment = new ChartFragment();
         settingFragment = new SettingFragment();
         aboutusFragment = new AboutUsFragment();
+        announcementFragment = new WhatsNewFragment();
     }
 
     public void initFragment(){
@@ -85,6 +87,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about_us) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.place_fragement,aboutusFragment);
+            transaction.commit();
+        } else if (id== R.id.nav_annoucement){
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.place_fragement,announcementFragment);
             transaction.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
