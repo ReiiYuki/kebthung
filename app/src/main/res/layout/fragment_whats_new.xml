@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_event_note_black_48dp"
         android:id="@+id/img_new"
+        android:layout_margin="@dimen/fab_margin"
         />
     <TextView
         android:layout_width="match_parent"
@@ -16,6 +17,8 @@
         android:textSize="@dimen/dp_40"
         android:text="What's new?"
         android:id="@+id/what_title"
+        android:gravity="center"
+        android:layout_margin="@dimen/fab_margin"
         android:layout_below="@id/img_new"
         />
     <ListView
