@@ -6,6 +6,7 @@
     tools:context=".activities.LoginActivity"
     android:orientation="vertical"
     android:gravity="center"
+    android:scrollbars="vertical"
     android:background="@android:color/background_light"
     >
     <FrameLayout

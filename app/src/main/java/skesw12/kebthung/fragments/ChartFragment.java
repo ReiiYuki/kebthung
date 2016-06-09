@@ -153,11 +153,14 @@ public class ChartFragment extends Fragment {
                 values[7] = (float) amount;
                 label[7] = tempCal.get(Calendar.DATE) + "/" + (tempCal.get(Calendar.MONTH) + 1);
                 Log.d(getClass().getName(), "calculateWeek: " + new SimpleDateFormat("yy-mm-DD HH:mm:ss").format(tempCal.getTime()));
+                long create = w.getCreateDate().getTimeInMillis();
                 now -= 86400;
                 for (int i = notes.size() - 1; i >= 0 || count > 0; i--) {
                     if (i < 0) {
                         tempCal.setTimeInMillis(now);
-                        label[count--] = tempCal.get(Calendar.DATE) + "/" + (tempCal.get(Calendar.MONTH) + 1);
+                        label[count] = tempCal.get(Calendar.DATE) + "/" + (tempCal.get(Calendar.MONTH) + 1);
+                        if (now>=create) values[count--]=(float) amount;
+                        if (values[count+1]>max) max = values[count+1];
                         now -= 86400000;
                     } else {
                         if (notes.get(i).getTimestamp() < now) {
@@ -194,10 +197,13 @@ public class ChartFragment extends Fragment {
             label[7] = tempCal.get(Calendar.DATE)+"/"+(tempCal.get(Calendar.MONTH)+1);
             Log.d(getClass().getName(), "calculateWeek: "+new SimpleDateFormat("yy-mm-DD HH:mm:ss").format(tempCal.getTime()));
             now -=86400;
+            long create =  selectWallet.getCreateDate().getTimeInMillis();
             for (int i = notes.size()-1;i>=0||count>0;i--){
                 if (i<0) {
                     tempCal.setTimeInMillis(now);
                     label[count--] = tempCal.get(Calendar.DATE)+"/"+(tempCal.get(Calendar.MONTH)+1);
+                    if (now>=create) values[count--]=(float) amount;
+                    if (values[count+1]>max) max = values[count+1];
                     now -= 86400000;
                 }else {
                     if (notes.get(i).getTimestamp()<now){

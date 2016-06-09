@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="skesw12.kebthung">
+    package="skesw12.kebthung"
+    >
 
     <application
         android:allowBackup="true"

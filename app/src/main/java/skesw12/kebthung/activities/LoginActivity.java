@@ -1,5 +1,6 @@
 package skesw12.kebthung.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+    @SuppressLint("ValidFragment")
     public class AskNameFragment extends Fragment {
 
         @BindView(R.id.name_text)
@@ -100,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
+    @SuppressLint("ValidFragment")
     public class InputPasscodeFragment extends Fragment {
         @BindView(R.id.pin1) ImageView pin1;
         @BindView(R.id.pin2) ImageView pin2;
@@ -229,6 +232,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+    @SuppressLint("ValidFragment")
     public class FirstWalletFragment extends Fragment {
 
         @BindView(R.id.wallet_name_input) EditText walletNameText;
