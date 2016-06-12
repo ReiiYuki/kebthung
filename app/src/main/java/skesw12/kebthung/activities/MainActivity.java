@@ -1,5 +1,6 @@
 package skesw12.kebthung.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.nav_view) NavigationView navigationView;
     Fragment walletFragment,wishFragment,chartFragment,settingFragment,aboutusFragment,announcementFragment;
+    private boolean isPause;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,23 @@ public class MainActivity extends AppCompatActivity
         User.getInstance().saveFile(this);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        User.getInstance().saveFile(this);
+        isPause=true;
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        User.getInstance().loadFile(this);
+        if (isPause){
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+            isPause=false;
+        }
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

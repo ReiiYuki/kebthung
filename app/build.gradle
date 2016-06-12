@@ -8,8 +8,8 @@ android {
         applicationId "skesw12.kebthung"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 8
+        versionName "1.0.7"
     }
     buildTypes {
         release {

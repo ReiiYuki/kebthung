@@ -37,6 +37,10 @@ public class WhatsNewFragment extends Fragment {
        View rootview = inflater.inflate(R.layout.fragment_whats_new, container, false);
         ButterKnife.bind(this,rootview);
         final ArrayAdapter<DeveloperNote> adapter = new ArrayAdapter<DeveloperNote>(getActivity(),R.layout.dev_note_cell,new ArrayList<DeveloperNote>());
+        adapter.add(new DeveloperNote("Update Version 1.0.7","Fixed bug on chart"));
+        adapter.add(new DeveloperNote("Update Version 1.0.6","Change wish to goal for more understanding."));
+        adapter.add(new DeveloperNote("Update Version 1.0.5","Fixed bug on chart"));
+        adapter.add(new DeveloperNote("Update Version 1.0.4","Fixed bug on data lost when pause Kebthung too long time."));
         adapter.add(new DeveloperNote("Update Version 1.0.3","What's new function to show what's change on Kebthung"));
         adapter.add(new DeveloperNote("Update Version 1.0.2","Fixed Bug on Screen support size and Chart"));
         adapter.add(new DeveloperNote("Apologize on Data Lost","I apologize that your data had lost when update from version 1.0.0 to 1.0.1"));

@@ -82,7 +82,7 @@
             android:id="@+id/add_wish_button"
             android:fontFamily="sans-serif-light"
             android:textSize="@dimen/dp_20"
-            android:text="ADD WISH"/>
+            android:text="ADD GOAL"/>
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
