@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             return rootview;
         }
 
+
         private void initArray(){
             pins = new ImageView[]{pin1,pin2,pin3,pin4};
             nums = new Button[]{num0,num1,num2,num3,num4,num5,num6,num7,num8,num9};

@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -27,11 +29,16 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.nav_view) NavigationView navigationView;
     Fragment walletFragment,wishFragment,chartFragment,settingFragment,aboutusFragment,announcementFragment;
     private boolean isPause;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(getClass().getName(), "onCreate: ");
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        User.getInstance().loadFile(this);
+        intent = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         setUpFragment();
         initFragment();
         setTitle();
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+        Log.d(getClass().getName(), "onBackPressed: ");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
@@ -67,24 +75,52 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(getClass().getName(), "onPause: ");
         User.getInstance().saveFile(this);
-        isPause=true;
+        System.exit(0);
+//        isPause=true;
+//        startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        User.getInstance().loadFile(this);
-        if (isPause){
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-            startActivity(intent);
-            isPause=false;
-        }
+        Log.d(getClass().getName(), "onResume: ");
+//        if (isPause){
+//            startActivity(intent);
+//        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onPause();
+        User.getInstance().saveFile(this);
+        isPause=true;
+        Log.d(getClass().getName(), "onStop: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(getClass().getName(), "onRestart: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(getClass().getName(), "onDestroy: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(getClass().getName(), "onStart: ");
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        User.getInstance().saveFile(this);
         int id = item.getItemId();
         if (id == R.id.nav_wallet) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

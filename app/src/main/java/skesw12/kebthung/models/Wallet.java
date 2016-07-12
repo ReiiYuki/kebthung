@@ -69,7 +69,7 @@ public class Wallet implements Serializable{
     public boolean transfer(String purpose,Wallet des,double amount){
         if (balance-amount<0) return false;
         balance-=amount;
-        des.getMoney(purpose,amount);
+        des.setBalance(des.getBalance()+amount);
         notes.add(new TransferMoneyNote(this,des,purpose,amount));
         return true;
     }

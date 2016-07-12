@@ -37,6 +37,11 @@ public class WhatsNewFragment extends Fragment {
        View rootview = inflater.inflate(R.layout.fragment_whats_new, container, false);
         ButterKnife.bind(this,rootview);
         final ArrayAdapter<DeveloperNote> adapter = new ArrayAdapter<DeveloperNote>(getActivity(),R.layout.dev_note_cell,new ArrayList<DeveloperNote>());
+        adapter.add(new DeveloperNote("Update Version 1.1.2","Fixed bug on save data"));
+        adapter.add(new DeveloperNote("Update Version 1.1.1","Fixed bug on xxxdpi display"));
+        adapter.add(new DeveloperNote("Update Version 1.1.0","Fixed bug on save data"));
+        adapter.add(new DeveloperNote("Update Version 1.0.9","Fixed bug on save data"));
+        adapter.add(new DeveloperNote("Update Version 1.0.8","Fixed bug on transfer"));
         adapter.add(new DeveloperNote("Update Version 1.0.7","Fixed bug on chart"));
         adapter.add(new DeveloperNote("Update Version 1.0.6","Change wish to goal for more understanding."));
         adapter.add(new DeveloperNote("Update Version 1.0.5","Fixed bug on chart"));
